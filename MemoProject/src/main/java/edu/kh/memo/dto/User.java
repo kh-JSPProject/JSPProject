@@ -1,5 +1,14 @@
 package edu.kh.memo.dto;
 
-public class User {
+import lombok.*;
 
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+@Builder
+public class User {
+	private int userNo;
+	private String userId;
+	private String userPw;
+	private String userName;
 }
