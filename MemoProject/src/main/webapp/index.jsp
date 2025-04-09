@@ -7,7 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>메인 페이지</h1>
-
+	<h1>메인페이지</h1>
+	<h3>호연 윤진 주원 재호</h3>
+	<h6>윤진 작성</h6>
 </body>
 </html>
