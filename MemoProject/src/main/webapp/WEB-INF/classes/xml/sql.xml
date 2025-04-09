@@ -3,45 +3,5 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 
 <properties>
-
-	<!-- sql작성 -->
-	<entry key="todoListFullView">
-		SELECT TODO_NO, TODO_TITLE, TODO_COMPLETE, TO_CHAR(REG_DATE, 'YYYY-MM-DD HH24:MI:SS') REG_DATE FROM TB_TODO ORDER BY TODO_NO ASC
-	</entry>
-	<!--  할일을 전체 조회한다. 다만 디테일 내용만 빼고 (빌드 어노테이션을 실험하기 위함)-->
-	
-	<entry key = "getCompleteCount">
-		SELECT COUNT(*) FROM TB_TODO WHERE TB_TODO.TODO_COMPLETE =1
-	</entry>
-	
-	<entry key = "todoAdd">
-	INSERT INTO TB_TODO VALUES(SEQ_TODO_NO.NEXTVAL,?,?,DEFAULT,DEFAULT)
-	<!-- SEQ_TODO_NO.NEXTVAL  미리 시퀀스 객체를 마련해놨었음 -->
-	</entry>
-	
-	
-	<!--  할일 상세조회하는 태그 -->
-	<entry key = "todoDetail">
-		SELECT TODO_NO, TODO_TITLE, TODO_DETAIL, TODO_COMPLETE, TO_CHAR(REG_DATE, 'YYYY-MM-DD HH24:MI:SS') REG_DATE FROM TB_TODO  WHERE TODO_NO = ?
-	</entry>
-	
-	
-		<!-- 완료 여부를 변경하는 태그 -->
-	<entry key = "todoComplete">
-	UPDATE TB_TODO SET TODO_COMPLETE = DECODE(TODO_COMPLETE,0,1,1,0) WHERE TODO_NO = ? 
-	</entry>
-	
-	
-	
-	<!-- 삭제하는 태그 -->
-	<entry key = "todoDelete">
-	DELETE FROM TB_TODO WHERE TODO_NO = ?
-	</entry>
-	
-	
-	<!-- 수정하는 태그 -->
-	<entry key = "todoUpdate">
-	UPDATE TB_TODO SET TODO_TITLE = ? , TODO_DETAIL = ?  WHERE TODO_NO = ? 
-	</entry>
 	
 </properties>
