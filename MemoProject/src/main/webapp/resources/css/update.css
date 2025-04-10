@@ -1,0 +1,49 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+    outline: 1px solid #000;
+}
+
+body {
+    width: 1200px;
+    margin: auto;
+}
+
+body>* {
+    width: 100%;
+    display: flex;
+}
+
+#header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#header .left {
+    flex: 1;
+}
+
+#header .right {
+    flex: 1;
+}
+
+#container form {
+    width: 100%;
+}
+
+#container form > *{
+    width: 100%;
+}
+
+.memo.content {
+    height: 500px;
+    resize: none;
+}
+
+.tools {
+    display: flex;
+    justify-content: flex-end;
+}
