@@ -4,46 +4,112 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+
 import static edu.kh.memo.common.JDBCTemplate.*;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Properties;
+import java.io.FileInputStream;
+import java.io.IOException;
 
+import edu.kh.memo.dto.Memo;
 import edu.kh.memo.dto.User;
-
 
 public class MemoDAOImpl implements MemoDAO {
 	
-	private Statement stmt = null;
-	private PreparedStatement pstmt =null;
-	private ResultSet rs =null;
+	private Statement stmt;
+	private PreparedStatement pstmt;
+	private ResultSet rs;
 	
-	
-	@Override
-	public User selectUserById(String userId, Connection conn) throws Exception {
-	    User user = null;
-		String sql = "SELECT user_no, user_id, user_pw, user_name FROM TB_USERS WHERE user_id = ?";
-	    
-	    try {
-	        pstmt = conn.prepareStatement(sql);
-	        pstmt.setString(1, userId);
-	        rs = pstmt.executeQuery();
-	        
-	        if (rs.next()) {
-	            user = new User(
-	                rs.getInt("USER_NO"),
-	                rs.getString("USER_ID"),
-	                rs.getString("USER_PW"),
-	                rs.getString("USER_NAME")
-	            );
-	        }
-	    } finally {
-	        close(rs);
-	        close(pstmt);
-	    }
-	    
-	    return user;
+	private Properties prop;
+  
+  	public MemoDAOImpl() {
+      
+		try {
+			String filePath = MemoDAOImpl.class.getResource("/xml/sql.xml").getPath();
+			
+			prop = new Properties();
+			prop.loadFromXML(new FileInputStream(filePath));
+		} catch (IOException e) {
+			System.out.println("sql.xml 로드 중 예외 발생");
+			e.printStackTrace();
+		}
 	}
 
-	
+	@Override
+	public User userSelect(Connection conn, String userId) throws Exception {
+
+		User user = null;
+		
+		try {
+			
+			String sql = prop.getProperty("userSelect");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userId);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				int userNo = rs.getInt("user_no");
+				String userPw = rs.getString("user_pw");
+				String userName = rs.getString("user_name");
+				
+				user = User.builder()
+						.userNo(userNo)
+						.userId(userId)
+						.userPw(userPw)
+						.userName(userName)
+						.build();
+			}	
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return user;
+	}
+
+	@Override
+	public List<Memo> memoListSelect(Connection conn, String userId) throws Exception {
+
+		List<Memo> memoList = new ArrayList<Memo>();
+		
+		try {
+			String sql = prop.getProperty("memoListSelect");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userId);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				int memoNo = rs.getInt("memo_no");
+				int userNo = rs.getInt("user_no");
+				String title = rs.getString("title");
+				String content = rs.getString("content");
+				String reqDate = rs.getString("req_date");
+				String updateDate = rs.getString("update_date");
+				
+				Memo memo = Memo.builder()
+						.memoNo(memoNo)
+						.userNo(userNo)
+						.title(title)
+						.content(content)
+						.regDate(reqDate)
+						.updateDate(updateDate)
+						.build();
+				
+				memoList.add(memo); 
+			}
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return memoList;
+	}
+  
     @Override
     public int insertUser(User user, Connection conn) throws Exception {
         int result = 0;
@@ -63,7 +129,6 @@ public class MemoDAOImpl implements MemoDAO {
              result = pstmt.executeUpdate();
         }
         finally {
-        	close(rs);
  	        close(pstmt);
 		}
         return result;

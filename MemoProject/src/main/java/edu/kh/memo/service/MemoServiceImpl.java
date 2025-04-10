@@ -1,47 +1,76 @@
 package edu.kh.memo.service;
+
+import static edu.kh.memo.common.JDBCTemplate.*;
+
 import java.sql.Connection;
+import java.util.List;
 
 import edu.kh.memo.dao.MemoDAO;
 import edu.kh.memo.dao.MemoDAOImpl;
+import edu.kh.memo.dto.Memo;
 import edu.kh.memo.dto.User;
-import static edu.kh.memo.common.JDBCTemplate.*;
-
 
 public class MemoServiceImpl implements MemoService {
-	Connection conn = getConnection();
-    private MemoDAO dao  = new MemoDAOImpl();
-
-    
-    
-    
-    @Override
-    public User memoLogin(String userId, String userPw) throws Exception {
-       
-    
-        User daoUser = dao.selectUserById(userId, conn);
-        
-        if(daoUser==null) return null;
-        if(userId.equals(daoUser.getUserId()) && userPw.equals(daoUser.getUserPw())) {
-            return daoUser;
-        }
-        return null;
-    }
-
-    
-    @Override
-    public boolean signUp(User user) throws Exception {
-        // 이미 해당 ID가 존재하는가?
-
-    	int result = dao.insertUser(user, conn);
-    	if(result>0) {commit(conn); return true;}
-    	
-    	else {rollback(conn); return false;}
-    	
-    }
-
-
-
 	
+	private MemoDAO dao = new MemoDAOImpl();
 	
+	/** 로그인 서비스 */
+	@Override
+	public User memoLogin(String userId, String userPw) throws Exception {
+		Connection conn = getConnection();
+		
+		User daoUser = dao.selectUserById(userId, conn);
+		
+		close(conn);
+		
+		if(daoUser == null) return null;
+		
+		if(userId.equals(daoUser.getUserId()) && userPw.equals(daoUser.getUserPw())) {
+			return daoUser;
+		}
+		
+		return null;
+	}
 
+	/** 회원 가입 서비스 */
+	@Override
+	public boolean signUp(User user) throws Exception {
+		Connection conn = getConnection();
+		
+		int result = dao.insertUser(user, conn);
+		
+		if(result > 0) {
+			commit(conn);
+			close(conn);
+			return true;
+		} else {
+			rollback(conn);
+			close(conn);
+			return false;
+		}
+	}
+
+	/** 유저 조회 */
+	@Override
+	public User userSelect(String userId) throws Exception {
+		Connection conn = getConnection();
+		
+		User user = dao.userSelect(conn, userId);
+		
+		close(conn);
+		
+		return user;
+	}
+
+	/** 메모 리스트 조회 */
+	@Override
+	public List<Memo> memoListSelect(String userId) throws Exception {
+		Connection conn = getConnection();
+		
+		List<Memo> memoList = dao.memoListSelect(conn, userId);
+		
+		close(conn);
+		
+		return memoList;
+	}
 }
