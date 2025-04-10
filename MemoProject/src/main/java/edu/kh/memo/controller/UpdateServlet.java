@@ -38,6 +38,11 @@ public class UpdateServlet extends HttpServlet {
 		try {
 			int memoNo = Integer.parseInt(req.getParameter("memoNo"));
 			
+			String title = req.getParameter("title");
+			String content = req.getParameter("content");
+			String updateDate = req.getParameter("updateDate");
+			int result = service.memoUpdate(memoNo, title, content, updateDate);
+			
 			
 		} catch (Exception e) {
 			e.printStackTrace();
