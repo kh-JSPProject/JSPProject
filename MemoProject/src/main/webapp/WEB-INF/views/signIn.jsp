@@ -12,6 +12,19 @@
 
             <body>
                 <h1>로그인</h1>
+
+
+                <c:if test="${not empty sessionScope.signUpMessage}">
+                    <script>
+                        alert("${sessionScope.signUpMessage}");
+                    </script>
+                </c:if>
+                <c:remove var="signUpMessage" scope="session"></c:remove>
+
+                
+
+
+                
                 <c:if test="${not empty requestScope.errorMessage}">
                     <script>
                         alert("${requestScope.errorMessage}");
@@ -25,6 +38,8 @@
                     <hr>
                     <button type="submit" class="loginBtn"> login </button>
                 </form>
+
+
 
 
 
