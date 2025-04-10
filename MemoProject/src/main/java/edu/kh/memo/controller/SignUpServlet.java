@@ -17,6 +17,7 @@ import edu.kh.memo.dto.User;
 
 
 @WebServlet("/signup")
+
 // 사인업 JSP로 보낼 때 
 public class SignUpServlet extends HttpServlet {
 	@Override
@@ -24,13 +25,17 @@ public class SignUpServlet extends HttpServlet {
 		RequestDispatcher dispatcher= req.getRequestDispatcher("WEB-INF/views/signUp.jsp");
 		dispatcher.forward(req, resp);
 	}
-	
 
+	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		HttpSession session = req.getSession();		
+
 		String userId = req.getParameter("userId");
 		String userPw = req.getParameter("userPw");
-		String userName = req.getParameter("userId");
+		String userName = req.getParameter("userName");
+		String userPwCheck = req.getParameter("userPwCheck");
+		
 		
 		User user = null;
 		user = User.builder().userId(userId)
@@ -40,31 +45,50 @@ public class SignUpServlet extends HttpServlet {
 		
 		 boolean signup = false;
 
-			try {
+		  try {
+		        MemoService service = new MemoServiceImpl();
+		        signup = service.signUp(user);
+
+		        if (signup) {
+		            // 성공 시: 세션에 환영 메시지 저장 후 로그인 페이지로 redirect
+		            String signUpMessage = userName + "님 환영합니다!";
+		            session.setAttribute("signUpMessage", signUpMessage);
+		            resp.sendRedirect(req.getContextPath() + "/signin");
+		            return;  // 여기서 메서드 종료
+		        } else {
+		            String errorMessage = "회원가입에 실패하셨습니다. 아이디와 비밀번호를 다시 입력해주세요";
+		            req.setAttribute("errorMessage", errorMessage);
+		            RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/signUp.jsp");
+		            dispatcher.forward(req, resp);
+		            return;  // 여기서도 종료
+		        }
+		    
 				
+//				if (signup) {
+//				    // 1) 메시지 생성
+//				    String signUpMessage = user.getUserName() + "님 환영합니다!";
+//
+//				    // 2) 세션에 메시지 저장
+//				    session.setAttribute("signUpMessage", signUpMessage);
+//
+//				    // 3) 로그인 페이지로 리다이렉트
+//				    resp.sendRedirect("/signin");
+//
+//				} else {
+//					String errorMessage2 = "가입 실패!";
+//				    req.setAttribute("errorMessage2", errorMessage2);
+//				    RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/signUp.jsp");
+//				    dispatcher.forward(req, resp);
+//				}
 				
-				MemoService service = new MemoServiceImpl();
-				signup = service.signUp(user);
-				HttpSession session = req.getSession();		
-				String singUpMessage = "회원가입이 완료되셨습니다..";
-				String errorMessage = "회원가입에 실패하셨습니다. 아이디와 비밀번호를 다시 입력해주세요";
-				session.setAttribute("loginMember", signup);
-				session.setAttribute("user", user);
-				if(signup) {
-					session.setAttribute("logInmessage", singUpMessage);
-					resp.sendRedirect("/signin");
-				}		
-				else {
-					 req.setAttribute("errorMessage", errorMessage);
-					    RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/signUp.jsp");
-					    dispatcher.forward(req, resp);
-				}			
 			} 
 			
 			catch (Exception e) {
 				e.printStackTrace();
 			}
 			
+			
+
 		
 		
 	}
