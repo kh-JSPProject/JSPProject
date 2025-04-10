@@ -165,7 +165,9 @@ public class MemoDAOImpl implements MemoDAO {
 						.regDate(rs.getString("REG_DATE")).updateDate(rs.getString("UPDATE_DATE")).build();
 			}
 		} finally {
+			close(rs);
+			close(pstmt);
 		}
-		return null;
+		return memo;
 	}
 }

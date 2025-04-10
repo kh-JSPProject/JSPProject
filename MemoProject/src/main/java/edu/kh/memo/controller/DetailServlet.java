@@ -27,7 +27,11 @@ public class DetailServlet extends HttpServlet {
 					
 					//요청시 전달받은 파라미터 얻어오기
 					int memoNo = Integer.parseInt(req.getParameter("memoNo"));
-					
+					String content = req.getParameter("content");
+					String title = req.getParameter("title");
+					String regDage = req.getParameter("regDate");
+					String updateDate = req.getParameter("updateDate");
+
 					//알맞은 서비스 호출 후 결과 반환받기
 					Memo memo = service.memoDetail(memoNo);
 					// MEMO_NO 컬럼값이 todoNo와 같은 memo 가
@@ -50,6 +54,11 @@ public class DetailServlet extends HttpServlet {
 					//memo가 존재하는 경우
 					//detail.jsp 로 forward로 응답
 					req.setAttribute("memo", memo);
+					req.setAttribute("content", content);
+					req.setAttribute("title", title);
+					req.setAttribute("regDate", regDage);
+					req.setAttribute("updateDate", updateDate);
+//					req.setAttribute("userName", userName);
 					
 					String path = "/WEB-INF/views/detail.jsp";
 					
