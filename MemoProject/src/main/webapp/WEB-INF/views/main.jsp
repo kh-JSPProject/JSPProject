@@ -49,29 +49,25 @@
 				</a>
 			</div>
 		</c:forEach>
-	</div>
+    </div>
+    
+    <div>
+    
+    <%--session 범위에 message라는 key가 있을 경우  --%>
+	<c:if test ="${not empty sessionScope.message}">
+		<script>alert("${message}");</script>
+			
+			<%--message를 한번만 출력하고 제거  --%>
+		<c:remove var = "message" scope ="session" />
+	</c:if>
+    
+    </div>
+    
 
 
 	
-		<c:if test="${not empty sessionScope.message}">
-		<script>
-    		alert("<c:out value='${sessionScope.message}' escapeXml='false'/>");
-		</script>
-
-		
-		<%--message를 한번만 출력하고 제거 --%>
-		<c:remove var="message" scope="session"/>
-	</c:if>
 
 <!-- JS 파일 연결 -->
 <script src="/resources/js/main.js"></script>
-
-<c:if test="${not empty sessionScope.message}">
-  <script>
-    alert("<c:out value='${sessionScope.message}' escapeXml='false'/>");
-  </script>
-  <c:remove var="message" scope="session"/>
-</c:if>
-
 </body>
 </html>
