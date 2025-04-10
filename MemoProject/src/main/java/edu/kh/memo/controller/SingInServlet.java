@@ -24,13 +24,9 @@ public class SingInServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	    req.removeAttribute("errorMessage");
 	    req.getSession().removeAttribute("errorMessage");
-		String path = "WEB-INF/views/signIn.jsp";
+		String path = "/WEB-INF/views/signIn.jsp";
 		RequestDispatcher request =  req.getRequestDispatcher(path);
 		request.forward(req, resp);
-
-		
-		
-	
 
 	}
 
@@ -38,7 +34,6 @@ public class SingInServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String userId = req.getParameter("userId");
 		String userPw = req.getParameter("userPw");
-		
 		
         User login = null;  
 
@@ -71,7 +66,6 @@ public class SingInServlet extends HttpServlet {
 
 			}
 			
-			
 			else {
 				
 				 req.setAttribute("errorMessage", errorMessage);
@@ -83,7 +77,6 @@ public class SingInServlet extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 	
 	}
 	

@@ -21,4 +21,20 @@
 	ORDER BY memo_no DESC
 </entry>
 	
+
+<entry key = "memoDelete">
+	DELETE FROM TB_MEMOS
+	WHERE MEMO_NO=?
+</entry>	
+	
+	
+<entry key="memoCreate">
+ 	INSERT INTO TB_MEMOS
+ 	VALUES(SEQ_MEMO_NO.NEXTVAL,?,?,DEFAULT,DEFAULT)
+</entry>	
+	
+	
+	
+	
+	
 </properties>
