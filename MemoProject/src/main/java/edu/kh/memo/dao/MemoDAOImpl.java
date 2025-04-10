@@ -110,15 +110,16 @@ public class MemoDAOImpl implements MemoDAO {
 
 	/** 메모 작성 */
 	@Override
-	public int memoCreate(Connection conn, String title, String content) throws Exception {
+	public int memoCreate(Connection conn, int userNo,String title, String content) throws Exception {
 		int result = 0;
 
 		try {
 			String sql = prop.getProperty("memoCreate");
 			pstmt = conn.prepareStatement(sql);
 
-			pstmt.setString(1, title);
-			pstmt.setString(2, content); // 여기 오타 수정함(detail ➔ content)
+			pstmt.setInt(1, userNo);
+			pstmt.setString(2, title); 
+			pstmt.setString(3, content);
 
 			result = pstmt.executeUpdate();
 		} finally {
