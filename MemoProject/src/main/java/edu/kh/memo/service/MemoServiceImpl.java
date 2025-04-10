@@ -79,10 +79,40 @@ public class MemoServiceImpl implements MemoService {
 	public Memo memoDetail(int memoNo) throws Exception {
 		Connection conn = getConnection();
 		
-		Memo memo = dao.memoDetail(conn, memoNo); // DAO에 memoDetail 메소드 필요!
+		Memo memo = dao.memoDetail(conn, memoNo);
 		
 		close(conn);
 		
 		return memo;
+	}
+	
+	/** 메모 추가 서비스 */
+	@Override
+	public int memoCreate(String title, String content) throws Exception {
+		Connection conn = getConnection();
+		
+		int result = dao.memoCreate(conn, title, content);
+		
+		if(result > 0) commit(conn);
+		else rollback(conn);
+		
+		close(conn);
+		
+		return result;
+	}
+
+	/** 메모 삭제 서비스 */
+	@Override
+	public int memoDelete(int memoNo) throws Exception {
+		Connection conn = getConnection();
+		
+		int result = dao.memoDelete(conn, memoNo);
+		
+		if(result > 0) commit(conn);
+		else rollback(conn);
+		
+		close(conn);
+		
+		return result;
 	}
 }

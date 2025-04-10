@@ -38,8 +38,23 @@ public interface MemoService {
 	
 	/** 메모 상세 조회 서비스
 	 * @param memoNo
-	 * @return null 또는 Memo 객체
+	 * @return Memo 객체 또는 null
 	 * @throws Exception
 	 */
 	Memo memoDetail(int memoNo) throws Exception;
+
+	/** 메모 추가 서비스
+	 * @param title
+	 * @param content
+	 * @return 성공 시 추가된 행의 개수 / 실패 시 0 반환
+	 * @throws Exception
+	 */
+	int memoCreate(String title, String content) throws Exception;
+	
+	/** 메모 삭제 서비스
+	 * @param memoNo
+	 * @return 성공 시 삭제된 행의 개수 / 실패 시 0 반환
+	 * @throws Exception
+	 */
+	int memoDelete(int memoNo) throws Exception;
 }

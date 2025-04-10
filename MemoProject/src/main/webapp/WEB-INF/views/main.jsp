@@ -9,7 +9,8 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>${userName}님의 메모</title>
-	<link href="/resources/css/main.css" rel="stylesheet">
+	<!-- CSS 파일 연결 (webapp 기준 경로 작성) -->
+	<link rel="stylesheet" href="/resources/css/main.css">
 </head>
 <body>
 	<div id="header">
@@ -49,6 +50,8 @@
 	</div>
 
 	<div id="footer"></div>
+
+	<!-- JS 파일 연결 -->
 	<script src="/resources/js/main.js"></script>
 </body>
 </html>

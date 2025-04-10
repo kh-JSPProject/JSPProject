@@ -19,4 +19,13 @@ public interface MemoDAO {
 
     /** 특정 유저의 메모 리스트 조회 */
     List<Memo> memoListSelect(Connection conn, String userId) throws Exception;
+
+    /** 메모 상세 조회 */
+    Memo memoDetail(Connection conn, int memoNo) throws Exception;
+    
+    /** 메모 작성 */
+    int memoCreate(Connection conn, String title, String content) throws Exception;
+    
+    /** 메모 삭제 */
+    int memoDelete(Connection conn, int memoNo) throws Exception;
 }
