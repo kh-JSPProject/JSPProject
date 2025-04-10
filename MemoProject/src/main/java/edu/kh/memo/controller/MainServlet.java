@@ -19,7 +19,7 @@ import jakarta.servlet.http.HttpServletResponse;
 @WebServlet("/main")
 public class MainServlet extends HttpServlet {
 	
-	MemoService service = new MemoServiceImpl();
+	private MemoService service = new MemoServiceImpl();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
