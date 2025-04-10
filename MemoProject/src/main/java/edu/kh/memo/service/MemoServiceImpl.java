@@ -73,4 +73,16 @@ public class MemoServiceImpl implements MemoService {
 		
 		return memoList;
 	}
+	
+	/** 메모 상세 조회 */
+	@Override
+	public Memo memoDetail(int memoNo) throws Exception {
+		Connection conn = getConnection();
+		
+		Memo memo = dao.memoDetail(conn, memoNo); // DAO에 memoDetail 메소드 필요!
+		
+		close(conn);
+		
+		return memo;
+	}
 }
