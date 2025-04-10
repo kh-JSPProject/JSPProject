@@ -31,7 +31,7 @@
                     <hr>
 
 
-                    
+
                     <c:if test="${not empty sessionScope.PWEqualsError}">
                         <script>
                             alert("${sessionScope.PWEqualsError}");
@@ -82,9 +82,6 @@
                         </script>
                     </c:if>
                     <c:remove var="signUpMessage" scope="session"></c:remove>
-
-
-
 
 
                     <button type="submit" class="singInBtn"> WELCOME!! </button>

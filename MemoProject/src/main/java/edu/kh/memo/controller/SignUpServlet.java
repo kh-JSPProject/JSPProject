@@ -92,19 +92,19 @@ public class SignUpServlet extends HttpServlet {
 			
 			
 			
-			else if (service.userSelect(userId).getUserId()
-					.equals(userId))
-			{
-				session.setAttribute("existError", "이미 존재하는 아이디입니다.");
-				RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/signUp.jsp");
-				dispatcher.forward(req, resp);
-				return;
+			User existingUser = service.userSelect(userId);
+			if (existingUser != null) {
+			    session.setAttribute("existError", "이미 존재하는 아이디입니다.");
+			    RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/signUp.jsp");
+			    dispatcher.forward(req, resp);
+			    return;
 			}
 			
 			
 			
-			
 			signup = service.signUp(user);
+//			if(signup) 				System.out.println("일단 true긴 함");
+
 			
 			if (signup) {
 				// 성공 시: 세션에 환영 메시지 저장 후 로그인 페이지로 redirect
