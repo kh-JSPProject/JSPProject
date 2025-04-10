@@ -155,4 +155,10 @@ public class MemoDAOImpl implements MemoDAO {
 
         return result;
     }
+
+	@Override
+	public Memo memoDetail(Connection conn, int memoNo) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
