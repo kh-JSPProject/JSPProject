@@ -88,10 +88,10 @@ public class MemoServiceImpl implements MemoService {
 	
 	/** 메모 추가 서비스 */
 	@Override
-	public int memoCreate(String title, String content) throws Exception {
+	public int memoCreate(int userNo,String title, String content) throws Exception {
 		Connection conn = getConnection();
 		
-		int result = dao.memoCreate(conn, title, content);
+		int result = dao.memoCreate(conn,userNo,title, content);
 		
 		if(result > 0) commit(conn);
 		else rollback(conn);

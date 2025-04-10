@@ -2,6 +2,7 @@ package edu.kh.memo.controller;
 
 import java.io.IOException;
 
+import edu.kh.memo.service.MemoService;
 import edu.kh.memo.service.MemoServiceImpl;
 import edu.kh.memo.service.MemoService;
 import jakarta.servlet.ServletException;
