@@ -10,6 +10,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 @WebServlet("/memo/update")
 public class UpdateServlet extends HttpServlet {
@@ -26,6 +27,8 @@ public class UpdateServlet extends HttpServlet {
 			
 			req.setAttribute("memo", memo);
 			
+			req.getRequestDispatcher("/WEB-INF/views/update.jsp").forward(req, resp);	
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -34,15 +37,25 @@ public class UpdateServlet extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+		
 		try {
+			HttpSession session = req.getSession();
 			int memoNo = Integer.parseInt(req.getParameter("memoNo"));
 			
 			String title = req.getParameter("title");
 			String content = req.getParameter("content");
 			String updateDate = req.getParameter("updateDate");
+			
 			int result = service.memoUpdate(memoNo, title, content, updateDate);
 			
+			String message = null;
+			
+			if(result> 0) message = "메모 수정 성공!";
+			else 		  message = "메모 수정 실패...";
+			
+			session.setAttribute("message", message);
+			
+			resp.sendRedirect("/memo/detail?memoNo="+memoNo);
 			
 		} catch (Exception e) {
 			e.printStackTrace();

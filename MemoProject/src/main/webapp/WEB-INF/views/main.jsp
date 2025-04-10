@@ -65,20 +65,15 @@
             } 
         %>
 	</div>
-	
-    <% 
-        String message = (String) session.getAttribute("message");
-        if(message != null) {
-    %>
-    <script>
-        alert('<%= message %>');
-    </script>
-    <% 
-         session.removeAttribute("message");
-        } 
-    %>
 
-	<!-- JS 파일 연결 -->
-	<script src="/resources/js/main.js"></script>
+<div>
+<c:if test="${not empty sessionScope.message}">
+  <script>
+    alert('${sessionScope.message}');
+  </script>
+  <c:remove var="message" scope="session"/>
+</c:if>
+</div>
+<srcript src="/resouces/js/main.js"></srcript>
 </body>
 </html>
