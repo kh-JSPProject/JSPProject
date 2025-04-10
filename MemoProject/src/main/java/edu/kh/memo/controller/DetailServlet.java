@@ -3,6 +3,7 @@ package edu.kh.memo.controller;
 import java.io.IOException;
 
 import edu.kh.memo.dto.Memo;
+import edu.kh.memo.dto.User;
 import edu.kh.memo.service.MemoService;
 import edu.kh.memo.service.MemoServiceImpl;
 import jakarta.servlet.ServletException;
@@ -21,6 +22,18 @@ public class DetailServlet extends HttpServlet {
 		
 				//할 일 상세 조회 요청 처리 Servlet
 				try {
+					//세션 객체 생성
+					HttpSession session = req.getSession();
+					User loginMember = (session != null) ? (User) session.getAttribute("loginMember") : null;
+					
+					//로그인 정보 세션이 말료 됫을때
+					if (loginMember == null) {
+		                resp.sendRedirect("/main"); // 다시 메인으로 던져준다
+		                return;
+		            }
+					
+					
+					String userName = loginMember.getUserName();
 					
 					//서비스 객체 생성
 					MemoService service = new MemoServiceImpl();
@@ -34,6 +47,7 @@ public class DetailServlet extends HttpServlet {
 
 					//알맞은 서비스 호출 후 결과 반환받기
 					Memo memo = service.memoDetail(memoNo);
+					
 					// MEMO_NO 컬럼값이 todoNo와 같은 memo 가
 					//있으면 해당 Memo 객체 반환
 					//없으면 null 반환
@@ -44,10 +58,9 @@ public class DetailServlet extends HttpServlet {
 					if(memo ==null) {
 	
 						// session 객체 생성 후 message 세팅하기
-						HttpSession session = req.getSession();
-						session.setAttribute("message", "메모가 존재하지 않습니다.");
+					session.setAttribute("message", "메모가 존재하지 않습니다.");
 						
-						resp.sendRedirect("/");
+						resp.sendRedirect("/main");
 						return;
 					}
 					
@@ -58,13 +71,12 @@ public class DetailServlet extends HttpServlet {
 					req.setAttribute("title", title);
 					req.setAttribute("regDate", regDage);
 					req.setAttribute("updateDate", updateDate);
-//					req.setAttribute("userName", userName);
+					
 					
 					String path = "/WEB-INF/views/detail.jsp";
 					
 					//요청발송자 이용해서 요청 위임
 					req.getRequestDispatcher(path).forward(req, resp);
-					
 					
 				} catch (Exception e) {
 					e.printStackTrace();
