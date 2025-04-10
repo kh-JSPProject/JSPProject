@@ -22,38 +22,32 @@ public class SignInServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	    
-		
-		
-		HttpSession session = req.getSession(false);
-	    if (session != null) {
-	        // 로그인 페이지에 접근한 순간 기존 로그인 정보를 제거(강제 로그아웃 처리)
-	        session.removeAttribute("loginMember");
-	        // 또는 세션 전체를 무효화할 수도 있음: session.invalidate();
+	    // 캐시 제어 헤더 설정 (브라우저가 페이지를 캐시하지 않도록 함)
+		 // 캐시 제어 헤더
+	    resp.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); 
+	    resp.setHeader("Pragma", "no-cache");
+	    resp.setDateHeader("Expires", 0);
+
+
+	    HttpSession session = req.getSession(false);
+	    if (session != null && session.getAttribute("loginMember") != null) {
+	        // 이미 로그인 된 상태이면 강제로 메인 페이지로 리다이렉트함
+	        resp.sendRedirect("/main");
+	        return;
 	    }
 	    
-	    // 기존의 에러 메시지 제거
-	    req.removeAttribute("errorMessage");
-	    if(session != null) {
+	    // (필요한 경우) 에러 메시지 제거
+	    if (session != null) {
 	        session.removeAttribute("errorMessage");
-	        }
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		req.removeAttribute("errorMessage");
-	    req.getSession().removeAttribute("errorMessage");
-		String path = "/WEB-INF/views/signIn.jsp";
-		RequestDispatcher request =  req.getRequestDispatcher(path);
-		request.forward(req, resp);
-
+	    }
+	    
+	    // 로그인 페이지를 보여줌
+	    String path = "/WEB-INF/views/signIn.jsp";
+	    RequestDispatcher dispatcher = req.getRequestDispatcher(path);
+	    dispatcher.forward(req, resp);
 	}
-
+	
+	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String userId = req.getParameter("userId");
