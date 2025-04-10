@@ -8,9 +8,6 @@ import edu.kh.memo.dto.User;
 
 public interface MemoDAO {
 
-    /** 아이디로 회원 조회 */
-    User selectUserById(String userId, Connection conn) throws Exception;
-
     /** 회원 가입 (유저 삽입) */
     int insertUser(User user, Connection conn) throws Exception;
 

@@ -19,7 +19,7 @@ public class MemoServiceImpl implements MemoService {
 	public User memoLogin(String userId, String userPw) throws Exception {
 		Connection conn = getConnection();
 		
-		User daoUser = dao.selectUserById(userId, conn);
+		User daoUser = dao.userSelect(conn, userId);
 		
 		close(conn);
 		

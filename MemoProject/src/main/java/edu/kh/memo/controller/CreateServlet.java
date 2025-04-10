@@ -19,13 +19,13 @@ public class CreateServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 	
-	String title = request.getParameter("title");
+	String title = req.getParameter("title");
 	
-	String detail = request.getParameter("content");
+	String detail = req.getParameter("content");
 	
 	
 	
-	String sql = ""
+	String sql = "";
 	
 	
 	}
