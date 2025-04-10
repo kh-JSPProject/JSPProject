@@ -13,7 +13,7 @@
             <body>
                 <h1>로그인</h1>
 
-
+                
                 <c:if test="${not empty sessionScope.signUpMessage}">
                     <script>
                         alert("${sessionScope.signUpMessage}");
