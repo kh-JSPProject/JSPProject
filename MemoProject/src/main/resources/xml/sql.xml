@@ -38,7 +38,7 @@
 	
 <entry key="memoCreate">
  	INSERT INTO TB_MEMOS
- 	VALUES(SEQ_MEMO_NO.NEXTVAL,?,?,DEFAULT,DEFAULT)
+ 	VALUES(SEQ_MEMO_NO.NEXTVAL,?,?,?,DEFAULT,DEFAULT)
 </entry>	
 	
 	
