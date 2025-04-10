@@ -1,14 +1,17 @@
 package edu.kh.memo.dao;
 
-import static edu.kh.memo.common.JDBCTemplate.*;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+
+import static edu.kh.memo.common.JDBCTemplate.*;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
+import java.io.FileInputStream;
+import java.io.IOException;
 
 import edu.kh.memo.dto.Memo;
 import edu.kh.memo.dto.User;
@@ -20,6 +23,19 @@ public class MemoDAOImpl implements MemoDAO {
 	private ResultSet rs;
 	
 	private Properties prop;
+  
+  	public MemoDAOImpl() {
+      
+		try {
+			String filePath = MemoDAOImpl.class.getResource("/xml/sql.xml").getPath();
+			
+			prop = new Properties();
+			prop.loadFromXML(new FileInputStream(filePath));
+		} catch (IOException e) {
+			System.out.println("sql.xml 로드 중 예외 발생");
+			e.printStackTrace();
+		}
+	}
 
 	@Override
 	public User userSelect(Connection conn, String userId) throws Exception {
@@ -93,5 +109,28 @@ public class MemoDAOImpl implements MemoDAO {
 		
 		return memoList;
 	}
+  
+    @Override
+    public int insertUser(User user, Connection conn) throws Exception {
+        int result = 0;
+        String sql = "INSERT INTO TB_USERS (USER_no,user_id, user_pw, user_name) "
+        		+ "VALUES (SEQ_USER_NO.NEXTVAL, ? , ? , ? )";
 
+        // INSERT INTO TB_USERS (USER_no,user_id, user_pw, user_name) VALUES (SEQ_USER_NO.NEXTVAL,'choi05', 'pw05', '최진우')
+
+        try {
+        		
+             pstmt = conn.prepareStatement(sql);
+            
+             pstmt.setString(1, user.getUserId());
+             pstmt.setString(2, user.getUserPw());
+             pstmt.setString(3, user.getUserName());
+            
+             result = pstmt.executeUpdate();
+        }
+        finally {
+ 	        close(pstmt);
+		}
+        return result;
+    }
 }

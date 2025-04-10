@@ -7,15 +7,26 @@ import edu.kh.memo.dto.Memo;
 import edu.kh.memo.dto.User;
 import edu.kh.memo.service.MemoService;
 import edu.kh.memo.service.MemoServiceImpl;
+
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 
 @WebServlet("/main")
 public class MainServlet extends HttpServlet {
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        // (선택) 로그인 여부 확인 (세션에 loginMember 있는지 검사)
+        // 없다면 resp.sendRedirect("/signin") 등
+
+        // main.jsp로 forward
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/main.jsp");
+        dispatcher.forward(req, resp);
+    }
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -29,7 +40,7 @@ public class MainServlet extends HttpServlet {
 		try {
 			
 			HttpSession session = req.getSession();
-			userId = session.getAttribute("userId");
+			userId = (String) session.getAttribute("userId");
 			
 			User user = service.userSelect(userId);
 			userName = user.getUserName();
