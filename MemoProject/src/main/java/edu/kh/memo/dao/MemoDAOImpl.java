@@ -173,9 +173,8 @@ public class MemoDAOImpl implements MemoDAO {
 			if(rs.next()) {
 				memo = Memo.builder()
 						.memoNo(memoNo)
-						.userNo(rs.getInt("USER_NO"))
-						.title(rs.getString("MEMO_TITLE"))
-						.memoDetail(rs.getString("MEMO_DETAIL"))
+						.title(rs.getString("TITLE"))
+						.content(rs.getString("CONTENT"))
 						.regDate(rs.getString("REG_DATE"))
 						.updateDate(rs.getString("UPDATE_DATE"))
 						.build();
