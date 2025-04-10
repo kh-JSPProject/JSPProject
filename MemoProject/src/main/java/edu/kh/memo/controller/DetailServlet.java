@@ -12,7 +12,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-@WebServlet("/detail")
+
+@WebServlet("/memo/detail")
 public class DetailServlet extends HttpServlet {
 
 	@Override
