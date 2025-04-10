@@ -20,6 +20,14 @@
 					 WHERE user_id = ?)
 	ORDER BY memo_no DESC
 </entry>
+
+<entry key="memoDetail">
+	SELECT MEMO_NO, TITLE, CONTENT,
+		TO_CHAR(REG_DATE,'YYYY-MM-DD HH24:MI:SS') REG_DATE
+		TO_CHAR(UPDATE_DATE,'YYYY-MM-DD HH24:MI:SS') UPDATE_DATE
+		FROM TB_MEMOS
+		WHERE MEMO_NO = ?
+</entry>
 	
 
 <entry key = "memoDelete">

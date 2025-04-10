@@ -42,8 +42,6 @@ public class SingInServlet extends HttpServlet {
 			// 그에따른 결과를 반환받아 alert로 띄워주는 것이 로그인
 			// 결과값을 반환하는 (User객체 & null)
 			MemoService service = new MemoServiceImpl();
-
-			
 			login = service.memoLogin(userId, userPw);
 		
 			HttpSession session = req.getSession();

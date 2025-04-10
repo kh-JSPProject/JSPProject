@@ -7,8 +7,8 @@
             <head>
                 <meta charset="UTF-8">
                 <title>로그인</title>
-                <link rel="stylesheet" 
-                href="/resources/css/signIn.css">         </head>
+                <link rel="stylesheet" href="/resources/css/signIn.css">
+            </head>
 
             <body>
                 <h1>로그인</h1>
@@ -17,7 +17,7 @@
                         alert("${requestScope.errorMessage}");
                     </script>
                 </c:if>
-                <c:out value="${loginMember.userName}"/>
+                <c:out value="${loginMember.userName}" />
                 <form action="/signin" method="post">
                     아이디: <input type="text" name="userId" class="userId" required><br>
                     <hr>
@@ -26,9 +26,14 @@
                     <button type="submit" class="loginBtn"> login </button>
                 </form>
 
-                <h2>계정이 없으시다면? </h2>
-                <h3>지금 당장 회원가입 하세요</h3>
-                <button class="signUpBtn" type="button"> 회원가입</button>
+
+
+                <form action="/signup" method="get">
+                    <h2>계정이 없으시다면? </h2>
+                    <h3>지금 당장 회원가입 하세요</h3>
+                    <button class="signUpBtn" type="submit"> 회원가입</button>
+                </form>
+
                 <script src="/resources/js/signIn.js"></script>
             </body>
 

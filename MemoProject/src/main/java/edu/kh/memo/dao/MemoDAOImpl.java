@@ -156,16 +156,31 @@ public class MemoDAOImpl implements MemoDAO {
         return result;
     }
 
-	@Override
-	public User selectUserById(String userId, Connection conn) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	/**
+	 *메모 상세 조회
+	 */
 	@Override
 	public Memo memoDetail(Connection conn, int memoNo) throws Exception {
-		// TODO Auto-generated method stub
+		Memo memo = null;
+		
+		try {
+			String sql = prop.getProperty("memoDetail");
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, memoNo);
+			
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				memo = Memo.builder()
+						.memoNo(memoNo)
+						.title(rs.getString("TITLE"))
+						.content(rs.getString("CONTENT"))
+						.regDate(rs.getString("REG_DATE"))
+						.updateDate(rs.getString("UPDATE_DATE"))
+						.build();
+			}
+		} finally {
+		}
 		return null;
 	}
-
 }
