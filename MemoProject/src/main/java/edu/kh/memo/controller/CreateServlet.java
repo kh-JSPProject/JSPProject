@@ -43,6 +43,19 @@ public class CreateServlet extends HttpServlet{
 					String title = req.getParameter("title");
 					String content = req.getParameter("content");
 					
+					
+					
+					  if (title == null || title.trim().isEmpty() ||
+					            content == null || content.trim().isEmpty()) {
+
+					            session.setAttribute("message", "제목과 내용을 모두 작성해주세요.");
+					            resp.sendRedirect("/memo/create");
+					            return;
+					        }
+					
+					
+					
+					
 					MemoService service = new MemoServiceImpl();
 					int result = service.memoCreate(userNo,title,content);
 					

@@ -60,10 +60,6 @@
 					<div class="memo content"><%= memo.getContent() %></div>
 				</a>
 			</div>
-        <% 
-                }
-            } 
-        %>
 	</div>
 
 <div>
