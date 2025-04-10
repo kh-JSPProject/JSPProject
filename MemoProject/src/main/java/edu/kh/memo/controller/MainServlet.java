@@ -18,42 +18,36 @@ import jakarta.servlet.http.HttpServletResponse;
 
 @WebServlet("/main")
 public class MainServlet extends HttpServlet {
+	
+	MemoService service = new MemoServiceImpl();
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // (선택) 로그인 여부 확인 (세션에 loginMember 있는지 검사)
-        // 없다면 resp.sendRedirect("/signin") 등
 
-        // main.jsp로 forward
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/main.jsp");
-        dispatcher.forward(req, resp);
+        try {
+            HttpSession session = req.getSession(false); // 세션 가져오기
+            User loginMember = (session != null) ? (User) session.getAttribute("loginMember") : null;
+
+            if (loginMember == null) {
+                resp.sendRedirect("/signin"); // 로그인 안 한 경우 로그인 페이지로
+                return;
+            }
+
+            String userId = loginMember.getUserId();
+
+            // 메모리스트 조회
+            List<Memo> memoList = service.memoListSelect(userId);
+
+            // request에 세팅
+            req.setAttribute("loginMember", loginMember); // userName도 포함되어 있음
+            req.setAttribute("memoList", memoList);
+
+            String path = "/WEB-INF/views/main.jsp";
+            req.getRequestDispatcher(path).forward(req, resp);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
-	
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		MemoService service = new MemoServiceImpl();
-		
-		String userName;
-		String userId;
-		List<Memo> memoList = null;
-		
-		try {
-			
-			HttpSession session = req.getSession();
-			userId = (String) session.getAttribute("userId");
-			
-			User user = service.userSelect(userId);
-			userName = user.getUserName();
-			req.setAttribute("userName", userName);
-			
-			memoList = service.memoListSelect(userId);
-			req.setAttribute("memoList", memoList);
-			
-			String path = "/WEB-INF/views/main.jsp";
-			req.getRequestDispatcher(path).forward(req, resp);
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		} 
-	}
+
 }

@@ -13,7 +13,7 @@
 <entry key="memoListSelect">
 	SELECT memo_no, user_no, title, content, 
 		   to_char(reg_date,'YYYY-MM-DD HH:MI') reg_date,
-		   to_char(update_date,'YYYY-MM-DD HH:MI')
+		   to_char(UPDATE_DATE,'YYYY-MM-DD HH:MI') UPDATE_DATE
 	FROM tb_memos
 	WHERE user_no = (SELECT user_no
 					 FROM TB_USERS

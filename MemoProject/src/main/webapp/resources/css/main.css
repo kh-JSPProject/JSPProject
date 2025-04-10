@@ -32,3 +32,7 @@ body>* {
     justify-content: space-between;
     align-items: center;
 }
+
+.memo {
+    width: 100%;
+}

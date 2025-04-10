@@ -17,8 +17,6 @@ import edu.kh.memo.dto.User;
 
 
 @WebServlet("/signup")
-@
-
 // 사인업 JSP로 보낼 때 
 public class SignUpServlet extends HttpServlet {
 	@Override
