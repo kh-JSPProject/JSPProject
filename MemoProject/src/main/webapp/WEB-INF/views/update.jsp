@@ -32,19 +32,19 @@
         </div>
         
         <div id="container">
-            <form action="/memo/detail" method="post" id="formUpdate">
+            <form action="/memo/update" method="post" id="formUpdate">
             	<input type="hidden" name="memoNo" value="${param.memoNo}">
             	<input type="hidden" name="updateDate" class="updateDate">
             
                 <div class="lable">
                     <p>제목</p>
                 </div>
-                <input class="memo title" name="titleInput" value="${memo.title}" required placeholder="제목을 입력하세요.">
+                <input class="memo title" name="title" value="${memo.title}" required placeholder="제목을 입력하세요.">
     
                 <div class="lable">
                     <p>내용</p>
                 </div>
-                <textarea class="memo content" name="contentText" required placeholder="내용을 입력하세요">${memo.content}</textarea>
+                <textarea class="memo content" name="content" required placeholder="내용을 입력하세요">${memo.content}</textarea>
     
                 <div class="tools">
                     <button type="submit" class="update btn">수정 완료</button>

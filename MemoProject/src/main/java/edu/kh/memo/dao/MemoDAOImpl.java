@@ -182,10 +182,12 @@ public class MemoDAOImpl implements MemoDAO {
 			String sql = prop.getProperty("memoUpdate");
 			
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, memoNo);
-			pstmt.setString(2, title);
-			pstmt.setString(3, content);
-			pstmt.setString(4, updateDate);
+			pstmt.setString(1, title);
+			pstmt.setString(2, content);
+			pstmt.setString(3, updateDate);
+			pstmt.setInt(4, memoNo);
+			
+			result = pstmt.executeUpdate();
 			
 		} finally {
 			close(pstmt);
