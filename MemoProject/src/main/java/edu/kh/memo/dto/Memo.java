@@ -10,10 +10,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class Memo {
-	private int memoNo;		//메모번호
-	private int userNo;		//유저번호
-	private String title;	//제목
-	private String content;	//내용
-	private String regDate;	//날짜
-	private String updateDate; //업데이트 날짜
+	private int memoNo;		// 메모 번호
+	private int userNo;		// 유저 번호
+	private String title;	// 제목
+	private String content;	// 내용
+	private String regDate;	// 작성 날짜
+	private String updateDate; // 수정 날짜
 }

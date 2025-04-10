@@ -11,8 +11,8 @@ import lombok.NoArgsConstructor;
 @Builder
 public class User {
 
-	private int userNo;			//유저번호
-	private String userId;		//유저아이디
-	private String userPw;		//유저비밀번호
-	private String userName;	//유저이름
+	private int userNo;			// 유저 번호
+	private String userId;		// 유저 아이디
+	private String userPw;		// 유저 비밀번호
+	private String userName;	// 유저 이름
 }
