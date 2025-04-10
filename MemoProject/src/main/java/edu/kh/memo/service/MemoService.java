@@ -58,4 +58,14 @@ public interface MemoService {
 	 * @throws Exception
 	 */
 	int memoDelete(int memoNo) throws Exception;
+
+	/** 메모 수정 서비스
+	 * @param memoNo
+	 * @param title
+	 * @param content
+	 * @param updateDate
+	 * @return 성공시 수정된 행의 개수 / 실패 시 0 반환
+	 * @throws Exception
+	 */
+	int memoUpdate(int memoNo, String title, String content, String updateDate) throws Exception ;
 }

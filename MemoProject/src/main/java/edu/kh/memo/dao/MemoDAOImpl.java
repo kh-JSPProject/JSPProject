@@ -171,4 +171,26 @@ public class MemoDAOImpl implements MemoDAO {
 		}
 		return memo;
 	}
+
+	@Override
+	public int memoUpdate(Connection conn, int memoNo, String title, String content, String updateDate)
+			throws Exception {
+		
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("memoUpdate");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, memoNo);
+			pstmt.setString(2, title);
+			pstmt.setString(3, content);
+			pstmt.setString(4, updateDate);
+			
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
 }

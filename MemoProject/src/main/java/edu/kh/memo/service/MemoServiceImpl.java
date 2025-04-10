@@ -115,4 +115,19 @@ public class MemoServiceImpl implements MemoService {
 		
 		return result;
 	}
+
+	/** 메모 수정 서비스 */
+	@Override
+	public int memoUpdate(int memoNo, String title, String content, String updateDate) throws Exception {
+		Connection conn = getConnection();
+		
+		int result = dao.memoUpdate(conn, memoNo, title, content, updateDate);
+		
+		if(result>0) commit(conn);
+		else 		 rollback(conn);
+		
+		close(conn);
+				
+		return result;
+	}
 }
