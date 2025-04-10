@@ -28,7 +28,7 @@ public class DeleteServlet extends HttpServlet{
 			int memoNo = Integer.parseInt(req.getParameter("memoNo"));
 			
 			// 3. 서비스 호출 후 결과 반환
-			  int result = service.todoDelete(memoNo);
+			  int result = service.memoDelete(memoNo);
 			//4.성공/실패 메시지 세팅하기
 			 String message = null;
 				
