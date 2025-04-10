@@ -53,7 +53,15 @@
 
 	<div id="footer"></div>
 
-	<!-- JS 파일 연결 -->
-	<script src="/resources/js/main.js"></script>
+<!-- JS 파일 연결 -->
+<script src="/resources/js/main.js"></script>
+
+<c:if test="${not empty sessionScope.message}">
+  <script>
+    alert("<c:out value='${sessionScope.message}' escapeXml='false'/>");
+  </script>
+  <c:remove var="message" scope="session"/>
+</c:if>
+
 </body>
 </html>
