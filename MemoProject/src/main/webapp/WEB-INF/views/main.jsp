@@ -51,26 +51,14 @@
 		</c:forEach>
 	</div>
 
-
-	
-		<c:if test="${not empty sessionScope.message}">
-		<script>
-    		alert("<c:out value='${sessionScope.message}' escapeXml='false'/>");
-		</script>
-
-		
-		<%--message를 한번만 출력하고 제거 --%>
-		<c:remove var="message" scope="session"/>
-	</c:if>
-
-<!-- JS 파일 연결 -->
-<script src="/resources/js/main.js"></script>
-
+<div>
 <c:if test="${not empty sessionScope.message}">
   <script>
-    alert("<c:out value='${sessionScope.message}' escapeXml='false'/>");
+    alert('${sessionScope.message}');
   </script>
   <c:remove var="message" scope="session"/>
 </c:if>
+</div>
+<srcript src="/resouces/js/main.js"></srcript>
 </body>
 </html>
