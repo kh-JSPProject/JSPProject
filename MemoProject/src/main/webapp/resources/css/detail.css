@@ -1,9 +1,19 @@
+*{box-sizing: border-box;
+margin: 0;
+padding: 0;
+
+outline: 1px solid black;
+}
+#header {
+  display: flex;
+
+}
+#header >.right{
+  
+}
 div {
   margin: 10px 0;
 }
-.complete>span{font-weight: bold;}
-.green {color: green;}
-.red {color: red;}
 .content{
   border: 2px solid #ccc;
   padding: 10px;
