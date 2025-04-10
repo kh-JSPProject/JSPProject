@@ -24,7 +24,7 @@ public class SingInServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	    req.removeAttribute("errorMessage");
 	    req.getSession().removeAttribute("errorMessage");
-		String path = "WEB-INF/views/signIn.jsp";
+		String path = "/WEB-INF/views/signIn.jsp";
 		RequestDispatcher request =  req.getRequestDispatcher(path);
 		request.forward(req, resp);
 
@@ -39,7 +39,6 @@ public class SingInServlet extends HttpServlet {
 		String userId = req.getParameter("userId");
 		String userPw = req.getParameter("userPw");
 		
-		
         User login = null;  
 
 		try {
@@ -47,8 +46,6 @@ public class SingInServlet extends HttpServlet {
 			// 그에따른 결과를 반환받아 alert로 띄워주는 것이 로그인
 			// 결과값을 반환하는 (User객체 & null)
 			MemoService service = new MemoServiceImpl();
-
-			
 			login = service.memoLogin(userId, userPw);
 		
 			HttpSession session = req.getSession();
