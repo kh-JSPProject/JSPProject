@@ -1,12 +1,34 @@
-#memoList{
-  border-collapse: collapse;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+    outline: 1px solid black;
 }
-#memoList td, #memoList th{
-  padding: 5px,8px;
+
+body {
+    width: 1200px;
+    margin: auto;
 }
-thead th{
-  background-color: skyblue;
+
+body>* {
+    width: 100%;
+    display: flex;
 }
-tbody>tr:nth-of-type(2n){
-  background-color: #ddd;
+
+#header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#header > .right {
+    display: flex;
+    flex-direction: row;
+}
+
+#menu {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
