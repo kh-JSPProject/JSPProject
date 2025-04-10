@@ -28,10 +28,6 @@ public class SingInServlet extends HttpServlet {
 		RequestDispatcher request =  req.getRequestDispatcher(path);
 		request.forward(req, resp);
 
-		
-		
-	
-
 	}
 
 	@Override
@@ -68,7 +64,6 @@ public class SingInServlet extends HttpServlet {
 
 			}
 			
-			
 			else {
 				
 				 req.setAttribute("errorMessage", errorMessage);
@@ -80,7 +75,6 @@ public class SingInServlet extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 	
 	}
 	
