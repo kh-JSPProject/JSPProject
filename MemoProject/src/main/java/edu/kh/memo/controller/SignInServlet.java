@@ -22,7 +22,31 @@ public class SignInServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	    
+		
+		
+		HttpSession session = req.getSession(false);
+	    if (session != null) {
+	        // 로그인 페이지에 접근한 순간 기존 로그인 정보를 제거(강제 로그아웃 처리)
+	        session.removeAttribute("loginMember");
+	        // 또는 세션 전체를 무효화할 수도 있음: session.invalidate();
+	    }
+	    
+	    // 기존의 에러 메시지 제거
 	    req.removeAttribute("errorMessage");
+	    if(session != null) {
+	        session.removeAttribute("errorMessage");
+	        }
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		req.removeAttribute("errorMessage");
 	    req.getSession().removeAttribute("errorMessage");
 		String path = "/WEB-INF/views/signIn.jsp";
 		RequestDispatcher request =  req.getRequestDispatcher(path);
