@@ -85,8 +85,8 @@ public class MemoDAOImpl implements MemoDAO {
                         .userNo(rs.getInt("user_no"))
                         .title(rs.getString("title"))
                         .content(rs.getString("content"))
-                        .regDate(rs.getString("req_date"))
-                        .updateDate(rs.getString("update_date"))
+                        .regDate(rs.getString("reg_date"))
+                        .updateDate(rs.getString("UPDATE_DATE"))
                         .build();
 
                 memoList.add(memo);
@@ -155,4 +155,10 @@ public class MemoDAOImpl implements MemoDAO {
 
         return result;
     }
+
+	@Override
+	public Memo memoDetail(Connection conn, int memoNo) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

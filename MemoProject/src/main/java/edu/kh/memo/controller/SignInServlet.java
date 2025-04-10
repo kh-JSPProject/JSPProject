@@ -18,19 +18,15 @@ import edu.kh.memo.service.MemoServiceImpl;
  * Servlet implementation class LoginServlet
  */
 @WebServlet("/signin")
-public class SingInServlet extends HttpServlet {
+public class SignInServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	    req.removeAttribute("errorMessage");
 	    req.getSession().removeAttribute("errorMessage");
-		String path = "WEB-INF/views/signIn.jsp";
+		String path = "/WEB-INF/views/signIn.jsp";
 		RequestDispatcher request =  req.getRequestDispatcher(path);
 		request.forward(req, resp);
-
-		
-		
-	
 
 	}
 
@@ -65,7 +61,6 @@ public class SingInServlet extends HttpServlet {
 				session.setAttribute("logInmessage", loginMessage);
 				// 메시지를 단순히 반갑습니다만 전하고 user의 이름을 어차피 JSP에서 받을 예정이므로 JSP단에서 처리하기로 한다.
 				
-
 				resp.sendRedirect("/main");
 				// 여기서는 진짜 main.jsp페이지로의 리다이렉트가 사용될 것
 
