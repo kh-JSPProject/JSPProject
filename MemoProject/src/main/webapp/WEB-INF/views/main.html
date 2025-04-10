@@ -4,21 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="/MemoProject/src/main/webapp/resources/css/main.css" rel="stylesheet">
 </head>
 <body>
     <div id="header">
+        <div class="home btn left">
+            <a href="/main">HOME</a>
+        </div>
+
+        <div class="right">
             <div class="userInfo">
                 <p>${sessionScope.userName}</p>
             </div>
             <button type="button" class="signOut" class="btn">SIGN OUT</button>
+        </div>
     </div>
 
     <div id="menu">
-        <div class="home btn">
-            <a href="/main">HOME</a>
+        <div class="left">
+            <p>PAGE TITLE</p>
         </div>
 
-        <div class="create btn">
+        <div class="create btn right">
             <a href="/memo/create">CREATE MEMO</a>
         </div>
     </div>

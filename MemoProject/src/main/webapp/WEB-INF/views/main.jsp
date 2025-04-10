@@ -3,42 +3,52 @@
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>ONLINE MEMO APP</title>
-<link href="/resources/css/main.css" rel="stylesheet">
-</head>
-<body>
-    <div id="header">
-		<div class="userInfo">
-			<p>${sessionScope.userName}</p>
+	<!DOCTYPE html>
+	<html lang="ko">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>${userName}님의 메모</title>
+		<link href="/resources/css/main.css" rel="stylesheet">
+	</head>
+	<body>
+		<div id="header">
+			<div class="home btn left">
+				<a href="/main">HOME</a>
+			</div>
+	
+			<div class="right">
+				<div class="userInfo">
+					<p>${userName}</p>
+				</div>
+				<button type="button" class="signOut btn">로그아웃</button>
+			</div>
 		</div>
-		<button type="button" class="signOut" class="btn">SIGN OUT</button>
-</div>
-
-<div id="menu">
-	<div class="home btn">
-		<a href="/main">HOME</a>
-	</div>
-
-	<div class="create btn">
-		<a href="/memo/create">CREATE MEMO</a>
-	</div>
-</div>
-
-<div id="container">
-	<div class="memo item">
-		<a href="/memo/detail">
-			<div class="memo title"></div>
-			<div class="memo userName"></div>
-			<div class="memo editDate"></div>
-			<div class="memo content"></div>
-		</a>
-	</div>
-</div>
-
-	<script src="/resources/js/main.js"></script>
-</body>
-</html>
+	
+		<div id="menu">
+			<div class="left">
+				<p>메모</p>
+			</div>
+	
+			<div class="create btn right">
+				<a href="/memo/create">메모 작성하기</a>
+			</div>
+		</div>
+	
+		<div id="container">
+		<c:forEach items="${memoList}" var="memo" varStatus="vs">
+			<div class="memo item">
+				<a href="/memo/detail?memoNo=${memo.memoNo}">
+					<div class="memo title">${memo.title}</div>
+					<div class="memo userName">${memo.userName}</div>
+					<div class="memo editDate">${memo.updateDate}</div>
+					<div class="memo content">${memo.content}</div>
+				</a>
+			</div>
+		</c:forEach>
+		</div>
+	
+		<div id="footer"></div>
+		<script src="/resources/js/main.js"></script>
+	</body>
+	</html>
