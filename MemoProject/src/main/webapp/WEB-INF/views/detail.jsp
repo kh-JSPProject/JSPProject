@@ -10,30 +10,30 @@
 <title>${detail}</title>
 </head>
 <body>
-		<h1>${sessionScope.loginMember}</h1>
+	<h1>${sessionScope.loginMember}</h1>
 
-	<h1>${todo.todoTitle}</h1>
+	<h1>${memo.memoTitle}</h1>
 	
 	<div class="complete">
 		완료 여부 :
 		
-		<c:if test="${todo.todoComplete}">
+		<c:if test="${memo.memoComplete}">
 			<span class="green">O</span>
 		</c:if>
 		
-		<c:if test="${not todo.todoComplete}">
+		<c:if test="${not memo.memoComplete}">
 			<span class="red">X</span>
 		</c:if>
 	</div>
 
 	<div>
-		작성일 : ${todo.regDate}
+		작성일 : ${memo.regDate}
 	</div>
 	<div>
-		수정일 : ${todo.updateDate}
+		수정일 : ${memo.updateDate}
 	</div>
 	
-	<div class="content">${todo.todoDetail}</div>
+	<div class="content">${memo.memoDetail}</div>
 	
 	<div class= "btn-container">
 		<div>

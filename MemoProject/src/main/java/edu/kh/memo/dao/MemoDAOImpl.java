@@ -155,4 +155,40 @@ public class MemoDAOImpl implements MemoDAO {
 
         return result;
     }
+
+	/**
+	 *메모 상세 조회
+	 */
+	@Override
+	public Memo memoDetail(Connection conn, int memoNo) throws Exception {
+		Memo memo = null;
+		
+		try {
+			String sql = prop.getProperty("memoDetail");
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, memoNo);
+			
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				memo = Memo.builder()
+						.memoNo(memoNo)
+						.userNo(rs.getInt("USER_NO"))
+						.title(rs.getString("MEMO_TITLE"))
+						.memoDetail(rs.getString("MEMO_DETAIL"))
+						.regDate(rs.getString("REG_DATE"))
+						.updateDate(rs.getString("UPDATE_DATE"))
+						.build();
+						
+			}
+			
+			
+			
+			
+		} finally {
+			
+		}
+		
+		return null;
+	}
 }
