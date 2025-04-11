@@ -88,10 +88,10 @@ public class MemoServiceImpl implements MemoService {
 	
 	/** 메모 추가 서비스 */
 	@Override
-	public int memoCreate(String title, String content) throws Exception {
+	public int memoCreate(int userNo,String title, String content) throws Exception {
 		Connection conn = getConnection();
 		
-		int result = dao.memoCreate(conn, title, content);
+		int result = dao.memoCreate(conn,userNo,title, content);
 		
 		if(result > 0) commit(conn);
 		else rollback(conn);
@@ -113,6 +113,21 @@ public class MemoServiceImpl implements MemoService {
 		
 		close(conn);
 		
+		return result;
+	}
+
+	/** 메모 수정 서비스 */
+	@Override
+	public int memoUpdate(int memoNo, String title, String content, String updateDate) throws Exception {
+		Connection conn = getConnection();
+		
+		int result = dao.memoUpdate(conn, memoNo, title, content, updateDate);
+		
+		if(result>0) commit(conn);
+		else 		 rollback(conn);
+		
+		close(conn);
+				
 		return result;
 	}
 }

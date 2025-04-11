@@ -8,7 +8,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>${userName}님의 메모</title>
+	<title>${loginMember.userName}님의 메모</title>
 	<!-- CSS 파일 연결 (webapp 기준 경로 작성) -->
 	<link rel="stylesheet" href="/resources/css/main.css">
 </head>
@@ -20,7 +20,7 @@
 
 		<div class="right">
 			<div class="userInfo">
-				<p>${userName}</p>
+				<p>${loginMember.userName}</p>
 			</div>
 			<button type="button" class="signOut btn">로그아웃</button>
 		</div>
@@ -41,17 +41,24 @@
 			<div class="memo item">
 				<a href="/memo/detail?memoNo=${memo.memoNo}">
 					<div class="memo title">${memo.title}</div>
-					<div class="memo userName">${memo.userName}</div>
-					<div class="memo editDate">${memo.updateDate}</div>
+					<div class="memo info">
+						<span class="memo userName">${loginMember.userName}</span>
+						<span class="memo editDate">${memo.updateDate}</span>
+					</div>
 					<div class="memo content">${memo.content}</div>
 				</a>
 			</div>
 		</c:forEach>
 	</div>
 
-	<div id="footer"></div>
-
-	<!-- JS 파일 연결 -->
-	<script src="/resources/js/main.js"></script>
+<div>
+<c:if test="${not empty sessionScope.message}">
+  <script>
+    alert('${sessionScope.message}');
+  </script>
+  <c:remove var="message" scope="session"/>
+</c:if>
+</div>
+<srcript src="/resouces/js/main.js"></srcript>
 </body>
 </html>

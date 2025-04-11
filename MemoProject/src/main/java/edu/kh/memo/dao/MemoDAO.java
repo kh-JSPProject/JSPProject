@@ -21,8 +21,11 @@ public interface MemoDAO {
     Memo memoDetail(Connection conn, int memoNo) throws Exception;
     
     /** 메모 작성 */
-    int memoCreate(Connection conn, String title, String content) throws Exception;
+    int memoCreate(Connection conn, int userNo,String title, String content) throws Exception;
     
     /** 메모 삭제 */
     int memoDelete(Connection conn, int memoNo) throws Exception;
+
+	/** 메모 수정 */
+	int memoUpdate(Connection conn, int memoNo, String title, String content, String updateDate) throws Exception ;
 }

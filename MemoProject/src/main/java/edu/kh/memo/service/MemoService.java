@@ -44,12 +44,13 @@ public interface MemoService {
 	Memo memoDetail(int memoNo) throws Exception;
 
 	/** 메모 추가 서비스
+	 * @param userNo
 	 * @param title
 	 * @param content
 	 * @return 성공 시 추가된 행의 개수 / 실패 시 0 반환
 	 * @throws Exception
 	 */
-	int memoCreate(String title, String content) throws Exception;
+	int memoCreate(int userNo,String title, String content) throws Exception;
 	
 	/** 메모 삭제 서비스
 	 * @param memoNo
@@ -57,4 +58,14 @@ public interface MemoService {
 	 * @throws Exception
 	 */
 	int memoDelete(int memoNo) throws Exception;
+
+	/** 메모 수정 서비스
+	 * @param memoNo
+	 * @param title
+	 * @param content
+	 * @param updateDate
+	 * @return 성공시 수정된 행의 개수 / 실패 시 0 반환
+	 * @throws Exception
+	 */
+	int memoUpdate(int memoNo, String title, String content, String updateDate) throws Exception ;
 }
