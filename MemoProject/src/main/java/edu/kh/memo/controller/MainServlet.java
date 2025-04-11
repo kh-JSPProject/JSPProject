@@ -18,36 +18,40 @@ import jakarta.servlet.http.HttpServletResponse;
 
 @WebServlet("/main")
 public class MainServlet extends HttpServlet {
-	
+
 	private MemoService service = new MemoServiceImpl();
 
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        try {
-            HttpSession session = req.getSession(false); // 세션 가져오기
-            User loginMember = (session != null) ? (User) session.getAttribute("loginMember") : null;
+//		resp.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+//		resp.setHeader("Pragma", "no-cache");
+//		resp.setDateHeader("Expires", 0);
 
-            if (loginMember == null) {
-                resp.sendRedirect("/signin"); // 로그인 안 한 경우 로그인 페이지로
-                return;
-            }
+		try {
+			HttpSession session = req.getSession(false); // 세션 가져오기
+			User loginMember = (session != null) ? (User) session.getAttribute("loginMember") : null;
 
-            String userId = loginMember.getUserId();
+			if (loginMember == null) {
+				resp.sendRedirect("/signin"); // 로그인 안 한 경우 로그인 페이지로
+				return;
+			}
 
-            // 메모리스트 조회
-            List<Memo> memoList = service.memoListSelect(userId);
+			String userId = loginMember.getUserId();
 
-            // request에 세팅
-            req.setAttribute("loginMember", loginMember); // userName도 포함되어 있음
-            req.setAttribute("memoList", memoList);
+			// 메모리스트 조회
+			List<Memo> memoList = service.memoListSelect(userId);
 
-            String path = "/WEB-INF/views/main.jsp";
-            req.getRequestDispatcher(path).forward(req, resp);
+			// request에 세팅
+			req.setAttribute("loginMember", loginMember); // userName도 포함되어 있음
+			req.setAttribute("memoList", memoList);
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+			String path = "/WEB-INF/views/main.jsp";
+			req.getRequestDispatcher(path).forward(req, resp);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 }
