@@ -27,7 +27,7 @@
 
 	<div id="menu">
 		<div class="left">
-			<p>메모 목록</p>
+				<span>${loginMember.userName}님의 메모</span>
 		</div>
 
 		<div class="create btn right">
@@ -43,7 +43,8 @@
 				<head>
 					<meta charset="UTF-8">
 					<meta name="viewport" content="width=device-width, initial-scale=1.0">
-					<title>${loginMember.userName}님의 메모</title>
+					
+					
 					<!-- CSS 파일 연결  변경 now라는 현재시간을 담은 위에서 소환한 변수를 기준으로 다시 로드하는 것
 					 그러면 이전에 캐시에 남아있던 css설정이 초기화되며 
 					 이전과 같이 다시 로그인했을 때 이상한 css가 적용되던걸 방지할 수 있음
@@ -52,28 +53,14 @@
 				</head>
 
 				<body>
+			
 					<div id="header">
-						<div class="home btn left">
-							<a href="/main">HOME</a>
-						</div>
-
-						<div class="right">
-							<div class="userInfo">
-								<p>${loginMember.userName}</p>
-							</div>
-							<button type="button" class="signOut btn">로그아웃</button>
-						</div>
+						
+						
 					</div>
 
-					<div id="menu">
-						<div class="left">
-							<p>메모</p>
-						</div>
-
-						<div class="create btn right">
-							<a href="/memo/create">메모 작성하기</a>
-						</div>
-					</div>
+					
+					
 
 					<div id="container">
 						<c:forEach items="${memoList}" var="memo" varStatus="vs">
