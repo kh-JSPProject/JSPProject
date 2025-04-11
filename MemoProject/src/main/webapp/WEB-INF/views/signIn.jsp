@@ -13,7 +13,10 @@
 
             <!-- css나 js는 main에서의 내용이 바뀌면 이것도 바뀔 수 있기 때문에 확장성이 좋을듯 -->
             <link rel="stylesheet" href="/resources/css/main.css">
-            <link rel="stylesheet" href="/resources/css/signIn.css">
+            <% long now=System.currentTimeMillis(); %>
+                <link rel="stylesheet" href="/resources/css/signIn.css?ver=<%=now%>">
+
+
         </head>
         <!-- 로그인 페이지에서는 항상 로그인이 안 된 상태이므로 별도의 로그인 상태 표시 없이 사용 -->
 
@@ -40,8 +43,10 @@
 
             <div id="menu">
                 <div class="left">
-                    <p>적어놓고 싶은 내용이 있으면 마음대로 적어라!!</p>
-                    <p>안전한 무료 메모 웹사이트 MEMOAPP!!</p>
+                    <div class="slogan">
+                        <p>적어놓고 싶은 내용이 있으면 마음대로 적어라!!</p>
+                        <p>안전한 무료 메모 웹사이트 <span class="highlight">MEMOAPP!!</span></p>
+                      </div>
                 </div>
                 <div class="create btn right">
                     <a href="/memo/create" class="protectedLink">메모 작성하기</a>
@@ -52,7 +57,7 @@
             <!-- 여기서부터는 그냥 login내용 그대로임 -->
             <div id="container">
                 <div class="loginContainer">
-                    <h1>로그인</h1>
+                    <h1>LOGIN</h1>
 
                     <c:if test="${not empty sessionScope.signUpMessage}">
                         <script>
@@ -67,18 +72,29 @@
                         </script>
                     </c:if>
 
-                    <form action="/signin" method="post">
-                        아이디: <input type="text" name="userId" class="userId" required><br>
-                        <hr>
-                        비밀번호: <input type="password" name="userPw" class="userPw" required><br>
-                        <hr>
+                    <form action="/signin" method="post" class="loginForm">
+                        <div class="formRow">
+                            <label for="userId">아이디</label>
+                            <input type="text" name="userId" id="userId" class="userInput" required>
+                        </div>
+                    
+                        <div class="formRow">
+                            <label for="userPw">비밀번호</label>
+                            <input type="password" name="userPw" id="userPw" class="userInput" required>
+                        </div>
+                    
                         <button type="submit" class="loginBtn">로그인</button>
                     </form>
 
                     <form action="/signup" method="get">
-                        <h2>계정이 없으시다면?</h2>
-                        <h3>지금 당장 회원가입 하세요</h3>
-                        <button class="signUpBtn" type="submit">회원가입</button>
+                        <div class="signUpSection">
+                            <h2>계정이 없으시다면?</h2>
+                    
+                            <div class="signUpRow">
+                                <div class="signUpText">지금 당장 회원가입 하세요</div>
+                                <button class="signUpBtn" type="submit">회원가입</button>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -106,14 +122,14 @@
 
 
             <div>
-            <script>
-                document.querySelectorAll('.protectedLink').forEach(function (link) {
-                    link.addEventListener('click', function (e) {
-                        e.preventDefault(); // 링크 이동을 못하게 하는 이벤트 리스너
-                        alert("먼저 로그인해주세요.");
+                <script>
+                    document.querySelectorAll('.protectedLink').forEach(function (link) {
+                        link.addEventListener('click', function (e) {
+                            e.preventDefault(); // 링크 이동을 못하게 하는 이벤트 리스너
+                            alert("먼저 로그인해주세요.");
+                        });
                     });
-                });
-            </script>
+                </script>
             </div>
         </body>
 

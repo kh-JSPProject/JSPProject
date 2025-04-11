@@ -1,121 +1,164 @@
+/* === 기본 설정 유지 + 어두운 테마 === */
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    width: 1200px;
-    margin: auto;
-    font-family: 'Arial', sans-serif;
+  width: 1200px;
+  margin: auto;
+  font-family: 'Courier New', monospace;
+  background-color: #0f0f0f;
+  color: #ffffff;
 }
 
+/* 전체 영역 공통 */
 body > * {
-    width: 100%;
-    display: flex;
+  width: 100%;
+  display: flex;
 }
 
+/* === 헤더 & 메뉴 === */
 #header {
-    justify-content: space-between;
-    align-items: center;
-    padding: px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
 }
 
 #header .right {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 #menu {
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
 }
 
 #menu .right {
-    display: flex;
-    gap: 10px;
+  display: flex;
+  gap: 10px;
 }
 
-/* 버튼 공통 */
-button, a.btn {
-    background-color: white;
-    color: black;
-    border: 1px solid #ccc;
-    border-radius: 12px;
-    padding: 8px 16px;
-    box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-    text-decoration: none;
-    font-size: 14px;
+/* === 버튼 스타일 === */
+button,
+a.btn {
+  background-color: transparent;
+  color: #00ffe0;
+  border: 1px solid #00ffe0;
+  border-radius: 12px;
+  padding: 8px 16px;
+  box-shadow: 0 0 6px #00ffe099;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 14px;
+  transition: 0.3s;
 }
 
-button:hover, a.btn:hover {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+button:hover,
+a.btn:hover {
+  background-color: #00ffe0;
+  color: #000;
+  box-shadow: 0 0 12px #00ffe0;
 }
 
 /* 링크 스타일 제거 */
 a {
-    text-decoration: none;
-    color: inherit;
-    font-weight: normal;
+  text-decoration: none;
+  color: inherit;
+  font-weight: normal;
 }
 
-/* 컨테이너 */
+/* === 컨테이너 === */
 #container {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-   
-    padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0 20px;
 }
 
-/* 메모 카드 */
+/* === 메모 카드 === */
 .memo.item {
-    background-color: #f9f9f9;
-    border-radius: 12px;
-    padding: 30px;
-    margin: 20px;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  background-color: #1a1a1a;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 20px;
+  box-shadow: 0 0 12px #00ffe055;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 1px solid #00ffe0;
 }
 
-/* 메모 내부 */
+/* === 메모 내부 === */
 .memo.title {
-    font-size: 20px;
-    font-weight: bold;
+  font-size: 20px;
+  font-weight: bold;
+  color: #ff9879;
+  text-shadow: 0 0 5px #ffff00aa;
 }
 
 .memo.info {
-    display: flex;
-    gap: 10px;
-    font-size: 14px;
-    color: #666;
+  display: flex;
+  gap: 10px;
+  font-size: 14px;
+  color: #aaa;
 }
 
 .memo.content {
-    font-size: 16px;
-    color: #333;
-    border: 1px solid #aaa;
-    border-radius: 6px;
-    padding: 10px;
+  font-size: 16px;
+  color: #ffffff;
+  background-color: transparent;
+  border: 1px solid #00ffcc;
+  border-radius: 6px;
+  padding: 20px;
+  min-height: 80px;
+  text-shadow: 0 0 5px #00ffccaa;
+
+  /* 줄 수 제한 및 말줄임(...) 처리 */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.memo.content {
-    font-size: 16px;
-    color: #333;
-    border: 1px solid #aaa;
-    border-radius: 6px;
-    padding: 20px; /* 내부 여백 20px */
-    min-height: 80px; /* 최소 높이 80px */
-    
-    /* 줄 수 제한 및 말줄임(...) 처리 */
-    display: -webkit-box;
-    -webkit-line-clamp: 3; /* 최대 3줄까지 */
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
+.neon-title {
+  font-size: 1.8em;
+  font-weight: 900;
+  color: #ffff00;
+  text-shadow:
+    0 0 5px #ffff00,
+    0 0 10px #ffff00,
+    0 0 15px #ffcc00,
+    0 0 20px #ffaa00;
+  animation: neon-flicker 2s infinite alternate;
+  margin-bottom: 20px;
+}
+
+@keyframes neon-flicker {
+  0% {
+    opacity: 1;
+    text-shadow:
+      0 0 5px #ffff00,
+      0 0 10px #ffff00,
+      0 0 15px #ffcc00,
+      0 0 20px #ffaa00;
+  }
+  50% {
+    opacity: 0.85;
+    text-shadow:
+      0 0 2px #ffff00,
+      0 0 5px #ffcc00;
+  }
+  100% {
+    opacity: 1;
+    text-shadow:
+      0 0 6px #ffff00,
+      0 0 12px #ffcc00,
+      0 0 20px #ffaa00;
+  }
 }

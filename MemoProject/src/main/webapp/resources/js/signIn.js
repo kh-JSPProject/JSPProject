@@ -22,8 +22,8 @@ main.js도 참고하세요
 */
 
 
-// window.addEventListener('pageshow', function(event) {
-//     if (event.persisted) {  // 비포캐시, 즉 이전에 저장되었던 캐시가 복원되려는 명령이 생겼을 때
-//         window.location.reload(); // 비포 캐시에 있던 값은 무시하고 현재 페이지만 보여준다는 의미
-//     }
-// });
+window.addEventListener('pageshow', function(event) {
+    if (event.persisted) {  // 비포캐시, 즉 이전에 저장되었던 캐시가 복원되려는 명령이 생겼을 때
+        window.location.reload(); // 비포 캐시에 있던 값은 무시하고 현재 페이지만 보여준다는 의미
+    }
+});
