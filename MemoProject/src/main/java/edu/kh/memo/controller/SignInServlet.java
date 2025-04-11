@@ -23,29 +23,18 @@ public class SignInServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		// 여기서부턴 좀 뇌절같아서 캐시를 지우는게 좋다고는 하는데..
+		resp.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+		resp.setHeader("Pragma", "no-cache");
+		resp.setDateHeader("Expires", 0);
+		
+	    HttpSession session = req.getSession(false);
+	    if (session != null) {
+	        session.invalidate();  // 세션 통째로 제거
+	    }
 
-//		resp.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); 
-//		resp.setHeader("Pragma", "no-cache"); 
-//		resp.setDateHeader("Expires", 0); 
-
-		HttpSession session = req.getSession(false);
-
-		if (session != null && session.getAttribute("loginMember") != null) {
-			// 이미 로그인 된 상태이면 강제로 메인 페이지로 리다이렉트함
-			resp.sendRedirect("/main");
-			return;
-		}
-
-		if (session != null && session.getAttribute("loginMember") != null) {
-			resp.sendRedirect("/main");
-			return;
-		}
-		if (session != null) {
-			session.removeAttribute("errorMessage");
-		}
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/signIn.jsp");
-		dispatcher.forward(req, resp);
+	    // 로그인 페이지로 이동
+	    RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/signIn.jsp");
+	    dispatcher.forward(req, resp);
 	}
 
 	@Override
