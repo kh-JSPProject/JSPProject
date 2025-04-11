@@ -15,12 +15,12 @@
 <body>
 	<div id="header">
 		<div class="home btn left">
-			<a href="/main">HOME</a>
+			<a href="/main" class="btn">HOME</a>
 		</div>
 
 		<div class="right">
 			<div class="userInfo">
-				<p>${loginMember.userName}</p>
+				<p>${loginMember.userName} 님 </p>
 			</div>
 			<button type="button" class="signOut btn">로그아웃</button>
 		</div>
@@ -28,11 +28,11 @@
 
 	<div id="menu">
 		<div class="left">
-			<p>메모</p>
+			<p>메모 목록</p>
 		</div>
 
 		<div class="create btn right">
-			<a href="/memo/create">메모 작성하기</a>
+			<a href="/memo/create" class="btn">메모 작성하기</a>
 		</div>
 	</div>
 
