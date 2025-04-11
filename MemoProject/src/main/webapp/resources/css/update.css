@@ -1,49 +1,122 @@
+/* 기본 세팅 */
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-
-    outline: 1px solid #000;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    width: 1200px;
-    margin: auto;
+  background-color: #0f0f0f;
+  color: #00ffe0;
+  font-family: 'Courier New', monospace;
+  padding: 40px 20px;
+  width: 100%;
 }
 
-body>* {
-    width: 100%;
-    display: flex;
-}
-
+/* header */
 #header {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
 }
 
-#header .left {
-    flex: 1;
+#header .home.btn a {
+  color: #00ffe0;
+  font-size: 1.8em;
+  text-decoration: none;
+  text-shadow: 0 0 5px #00ffe0, 0 0 10px #00ffe0;
 }
 
-#header .right {
-    flex: 1;
+#header .home.btn a:hover {
+  color: #ffffff;
 }
 
-#container form {
-    width: 100%;
+#header .mid p {
+  font-size: 2em;
+  font-weight: bold;
+  text-shadow: 0 0 5px #00ffe0, 0 0 10px #00ffe0;
+  text-align: center;
 }
 
-#container form > *{
-    width: 100%;
+/* form */
+#container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
+#formUpdate {
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+  gap: 20px;
+  background-color: #1a1a1a;
+  padding: 40px;
+  border-radius: 20px;
+  border: 2px solid #00ffe0;
+  box-shadow: 0 0 20px #00ffe0aa;
+}
+
+/* 입력 라벨 */
+.lable p {
+  font-size: 1.2em;
+  color: #00ffe0;
+  text-shadow: 0 0 5px #00ffe0;
+}
+
+/* 제목 input */
+.memo.title {
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid #00ffe0;
+  color: #ffffff;
+  font-size: 1.1em;
+  padding: 10px 5px;
+  transition: border-color 0.3s;
+}
+
+.memo.title:focus {
+  outline: none;
+  border-bottom: 2px solid #ff00cc;
+}
+
+/* 내용 textarea */
 .memo.content {
-    height: 500px;
-    resize: none;
+  background-color: transparent;
+  border: 2px solid #00ffe0;
+  border-radius: 10px;
+  color: #ffffff;
+  font-size: 1em;
+  padding: 15px;
+  min-height: 250px;
+  resize: none;
+  transition: border-color 0.3s;
 }
 
+.memo.content:focus {
+  outline: none;
+  border-color: #ff00cc;
+}
+
+/* 수정 완료 버튼 */
 .tools {
-    display: flex;
-    justify-content: flex-end;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.update.btn {
+  background-color: transparent;
+  border: 2px solid #00ffe0;
+  color: #00ffe0;
+  font-size: 1.1em;
+  padding: 10px 30px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.update.btn:hover {
+  background-color: #00ffe0;
+  color: #0f0f0f;
 }
