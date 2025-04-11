@@ -33,8 +33,11 @@
 
 	
 	<div class="content">${memo.content}</div>
-		<div>
-	작성자 : ${loginMember.userName} 작성일 : ${memo.regDate} 수정일 : ${memo.updateDate}
+		
+	<div class = "memo-info">
+	작성자 : ${loginMember.userName}
+	작성일 : ${memo.regDate} 
+	수정일 : ${memo.updateDate}
 	</div>
 	
 	
