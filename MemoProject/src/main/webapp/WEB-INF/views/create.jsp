@@ -18,33 +18,33 @@
     <link rel="stylesheet" href="/resources/css/create.css">
 </head>
 <body>
-  <hr>
-  <h1>새로운 메모 작성하기</h1>
-  <hr>
-  
-  <p><strong>${sessionScope.loginMember.userName}</strong>님, CREATE NEW MEMO!</p>
- 
-  <hr>
-	<form action = "/memo/create" method="post" id ="addForm" >
-		<div>
-		
-		<input type ="text" name="title" placeholder="제목을 작성해주세요">
-		</div>
-		
-		<div>
-			<textarea rows="5" cols="50" name ="content" placeholder="내용을 작성해주세요."></textarea>
-		</div>
-		<br>
-		<button>새로운 메모 추가하기</button>
-	</form>
-  
+
+  <div id="pageWrapper">
+
+   
+
+    <!-- 홍길동님 인사말 -->
+    <div class="welcomeText">
+      ${sessionScope.loginMember.userName}님, CREATE NEW MEMO!
+    </div>
+
+    <!-- 메모 작성 폼 -->
+    <form action="/memo/create" method="post" id="addForm" >
+      <input type="text" name="title" placeholder="제목을 작성해주세요" >
+      <textarea name="content" placeholder="내용을 작성해주세요" ></textarea>
+      <button >새로운 메모 추가하기</button>
+    </form>
+
+  </div>
+
+  <!-- 작성 성공/실패 alert -->
   <c:if test="${not empty sessionScope.message}">
-  <script>
-    alert("${sessionScope.message}");
-  </script>
-  <c:remove var="message" scope="session"/>
-</c:if>
-  
-  
+    <script>
+      alert("${sessionScope.message}");
+    </script>
+    <c:remove var="message" scope="session"/>
+  </c:if>
+
 </body>
+
 </html>

@@ -1,37 +1,4 @@
-*{box-sizing: border-box;
-margin: 0;
-padding: 0;
-
-outline: 1px solid black;
-}
-#header {
-  display: flex;
-
-}
-#header >.right{
-  
-}
-div {
-  margin: 10px 0;
-}
-.content{
-  border: 2px solid #ccc;
-  padding: 10px;
-  width: 480px;
-  min-height: 300px;
-
-
-  /*내부 내용을 pre태그처럼
-  html 에 작성된 그대로 출력*/
-  white-space: pre-wrap; 
-}
-
-.btn-container{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 500px;
-}
+/* 전체 공통 */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -39,11 +6,13 @@ div {
 }
 
 body {
-  font-family: 'Noto Sans KR', sans-serif;
-  background-color: #f8f9fa;
-  padding: 20px;
+  background-color: #0f0f0f;
+  color: #00ffe0;
+  font-family: 'Courier New', monospace;
+  padding: 40px 20px;
 }
 
+/* 헤더 영역 */
 #header {
   display: flex;
   justify-content: space-between;
@@ -52,10 +21,11 @@ body {
 }
 
 #header .left a {
-  font-size: 18px;
-  color: #007BFF;
+  font-size: 1.8em;
+  color: #00ffe0;
   text-decoration: none;
   font-weight: bold;
+  text-shadow: 0 0 5px #00ffe0;
 }
 
 #header .left a:hover {
@@ -65,91 +35,105 @@ body {
 #header .right {
   display: flex;
   align-items: center;
+  gap: 10px;
 }
 
 #header .userInfo p {
   margin-right: 10px;
   font-weight: bold;
+  color: #00ffe0;
+  text-shadow: 0 0 5px #00ffe0;
 }
 
 #header .signOut {
-  background-color: #dc3545;
-  color: white;
-  border: none;
+  background-color: transparent;
+  border: 2px solid #ff0044;
+  color: #ff0044;
   padding: 8px 15px;
-  border-radius: 8px;
+  border-radius: 20px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: all 0.3s;
 }
 
 #header .signOut:hover {
-  background-color: #c82333;
+  background-color: #ff0044;
+  color: #0f0f0f;
 }
 
+/* 제목 */
 h1 {
   text-align: center;
-  font-size: 28px;
+  font-size: 2.5em;
   margin-bottom: 20px;
+  color: #00ffe0;
+  text-shadow: 0 0 10px #00ffe0, 0 0 20px #00ffe0;
 }
 
+/* 메모 내용 */
 .content {
-  border: 1px solid #ccc;
-  padding: 20px;
-  width: 100%;
-  min-height: 300px;
-  background: #fff;
-  border-radius: 10px;
-  margin: 0 auto 20px auto;
+  background-color: #1a1a1a;
+  border: 2px solid #00ffe0;
+  padding: 30px;
+  border-radius: 20px;
+  width: 80%;
+  margin: 0 auto 30px auto;
   white-space: pre-wrap;
+  box-shadow: 0 0 20px #00ffe0aa;
 }
 
+/* 작성자 정보 */
 .memo-info {
   text-align: center;
-  font-size: 14px;
-  color: #666;
+  font-size: 1em;
+  color: #00ffe0;
   margin-bottom: 30px;
+  text-shadow: 0 0 5px #00ffe0;
 }
 
+/* 버튼 영역 */
 .btn-container {
   display: flex;
   justify-content: space-between;
-  max-width: 500px;
+  max-width: 600px;
   margin: 0 auto 30px auto;
 }
 
 .btn-container button {
-  background-color: #007BFF;
-  color: white;
-  font-size: 16px;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 8px;
+  background-color: transparent;
+  border: 2px solid #00ffe0;
+  color: #00ffe0;
+  font-size: 1em;
+  padding: 10px 25px;
+  border-radius: 20px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: all 0.3s;
 }
 
 .btn-container button:hover {
-  background-color: #0056b3;
+  background-color: #00ffe0;
+  color: #0f0f0f;
 }
 
+/* 이전글, 다음글 버튼 */
 .btn-next {
   display: flex;
   justify-content: space-between;
-  max-width: 500px;
+  max-width: 600px;
   margin: 0 auto;
 }
 
 .btn-next button {
-  background-color: #6c757d;
-  color: white;
-  font-size: 14px;
-  padding: 8px 15px;
-  border: none;
-  border-radius: 8px;
+  background-color: transparent;
+  border: 2px solid #888;
+  color: #888;
+  font-size: 0.95em;
+  padding: 8px 20px;
+  border-radius: 20px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: all 0.3s;
 }
 
 .btn-next button:hover {
-  background-color: #5a6268;
+  background-color: #888;
+  color: #0f0f0f;
 }
