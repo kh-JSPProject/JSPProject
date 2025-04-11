@@ -35,7 +35,7 @@
 		</div>
 
 		<div class="create btn right">
-			<a href="/memo/create" class="btn neon-title">메모 작성하기</a>
+			<a href="/memo/create" class="btn white-glow">메모 작성하기</a>
 		</div>
 	</div>
 
