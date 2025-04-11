@@ -18,6 +18,9 @@
         <!-- 로그인 페이지에서는 항상 로그인이 안 된 상태이므로 별도의 로그인 상태 표시 없이 사용 -->
 
         <body>
+            <c:remove var="loginMember" scope="session" />
+            <!-- 굳이 쓴다면 이 타이밍이 적절 -->
+
 
             <!--  main.jsp의 헤더 영역을 그대로 가져옴.
         사용자 정보와 로그아웃 버튼은 없애고 만듦. -->
@@ -88,6 +91,9 @@
             </c:if>
 
 
+
+
+
             <!-- 여기까지는 그냥 login내용 그대로임 -->
 
 
@@ -99,6 +105,16 @@
 
 
 
+            <div>
+            <script>
+                document.querySelectorAll('.protectedLink').forEach(function (link) {
+                    link.addEventListener('click', function (e) {
+                        e.preventDefault(); // 링크 이동을 못하게 하는 이벤트 리스너
+                        alert("먼저 로그인해주세요.");
+                    });
+                });
+            </script>
+            </div>
         </body>
 
         </html>
