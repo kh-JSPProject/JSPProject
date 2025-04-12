@@ -56,11 +56,34 @@
 		</div>
 	</div>
 	
-	<div class = "btn-next">
-		<button>이전글</button>
-		<button>다음글</button>
-	</div>
+
 	
+	
+	
+<div class="btn-next">
+
+    <!-- 이전글 -->
+    <c:choose>
+        <c:when test="${prevNo != -1}">
+            <button onclick="location.href='/memo/detail?memoNo=${prevNo}'">이전글</button>
+        </c:when>
+        <c:otherwise>
+            <button disabled>이전글</button>
+        </c:otherwise>
+    </c:choose>
+
+    <!-- 다음글 -->
+    <c:choose>
+        <c:when test="${nextNo != -1}">
+            <button onclick="location.href='/memo/detail?memoNo=${nextNo}'">다음글</button>
+        </c:when>
+        <c:otherwise>
+            <button disabled>다음글</button>
+        </c:otherwise>
+    </c:choose>
+
+</div>
+
 		<%-- session 범위에 message가 있을 경우 --%>
 	<c:if test="${not empty sessionScope.message}">
 		<script>
@@ -74,6 +97,9 @@
 		<%--message를 한번만 출력하고 제거 --%>
 		<c:remove var="message" scope="session"/>
 	</c:if>
+	
+	
+
 
 <%--자바 연결 --%>
 <script src="/resources/js/detail.js"></script>
