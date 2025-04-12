@@ -28,6 +28,17 @@ const memoNo = new URLSearchParams(location.search).get("memoNo");
 
 // });
 
+
+//로그아웃 버튼
+const logOutBtn = document.querySelector("#logout");
+logOutBtn.addEventListener("click",()=>{
+
+  if(!confirm("정말 로그아웃하시겠습니까?"))return;
+  location.href= "/logout";
+});
+
+
+
 // 삭제 버튼
 const deleteBtn = document.querySelector("#deleteBtn");
 deleteBtn.addEventListener("click",()=>{
