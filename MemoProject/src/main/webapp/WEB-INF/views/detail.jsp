@@ -22,7 +22,7 @@
 			<div class="userInfo">
 				<p>${loginMember.userName}</p>
 			</div>
-			<button type="button" class="signOut btn">로그아웃</button>
+			<button type="button" class="signOut btn" id="logout" >로그아웃</button>
 		</div>
 	</div>
 	
