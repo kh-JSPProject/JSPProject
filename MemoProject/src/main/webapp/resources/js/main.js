@@ -1,4 +1,4 @@
-const logout = document.querySelector(".signout");
+const logout = document.querySelector(".signOut");
 logout.addEventListener("click", ()=>{
     location.href = "/logout";
 })
