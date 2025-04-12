@@ -1,3 +1,223 @@
-.userId{
-  color: aqua;
+/* 배경 전체 어둡게 */
+body {
+  background-color: #0f0f0f;
+  color: #00ffe0;
+  font-family: 'Courier New', monospace;
+  margin: 0;
+  padding: 0;
 }
+
+/* 가운데 정렬 */
+#container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}
+
+.loginContainer {
+  background-color: #1a1a1a;
+  border-radius: 20px;
+
+  /* 위아래 1.2배 늘리기 */
+  padding: 60px 50px;
+
+  /* 오른쪽만 늘리기 위한 가로 크기 확장 */
+  width: 900px; /* 예: 기존 750 → 900 */
+
+  text-align: left;
+  border: 2px solid #ffff00; /* 노란색 테두리 */
+  box-shadow: 0 0 20px #ffff00aa;
+}
+
+
+/* 로그인 제목만 가운데 정렬 */
+.loginContainer h1 {
+  color: #ffffff; /* 하얀색 */
+  text-align: center;
+  font-size: 2.5em;
+  font-weight: 900;
+}
+
+.userId,
+.userPw {
+  width: 90%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: none;
+  border-bottom: 2px solid #00ffe0;
+  background-color: transparent;
+  color: #ffffff;
+  font-size: 1em;
+  transition: border-color 0.3s;
+}
+
+.userId:focus,
+.userPw:focus {
+  outline: none;
+  border-color: #ff00cc;
+}
+
+/* 로그인 버튼 */
+.loginBtn {
+  color: #ffffff; /* 글자색 흰색 */
+  border: 2px solid #ffff00; /* 노란 테두리는 그대로 유지 */
+  background-color: transparent;
+  border-radius: 25px;
+  width: 100%;
+  padding: 12px 30px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+
+.loginBtn:hover {
+  background-color: #ffff00;
+  color: #000; /* hover 시엔 여전히 검정 글씨 유지 */
+}
+
+/* 회원가입 텍스트 및 버튼 */
+.loginContainer h2,
+.loginContainer h3 {
+  color: #ff00cc;
+  margin-top: 30px;
+}
+
+
+/* 로그인 폼 전체 */
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* 아이디 / 비번 한 줄 */
+.formRow {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+}
+
+/* 왼쪽 텍스트 라벨 */
+.formRow label {
+  width: 100px;
+  color: #00ffe0;
+  font-size: 1em;
+}
+
+/* 입력창 */
+.userInput {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-bottom: 2px solid #00ffe0;
+  background-color: transparent;
+  color: #fff;
+  font-size: 1em;
+}
+
+.userInput:focus {
+  outline: none;
+  border-color:azure ;
+}
+
+
+/* 회원가입 안내 묶는 영역 */
+.signUpSection {
+  margin-top: 50px; /* 기존보다 아래로 띄움 */
+  padding: 0 10px;
+}
+
+.signUpSection h2 {
+  color: #ff00cc;
+  font-size: 1.1em;
+  margin-bottom: 15px;
+}
+
+/* 한 줄 정렬 유지 */
+.signUpRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+/* 왼쪽 문장 */
+.signUpText {
+  color: #ff00cc;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+/* 오른쪽 버튼 */
+.signUpBtn {
+  padding: 10px 20px;
+  font-size: 0.95em;
+  background-color: transparent;
+  border: 2px solid #ff00cc;
+  color: #ff00cc;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.signUpBtn:hover {
+  background-color: #ff00cc;
+  color: #000;
+}
+
+/* HOME, 메뉴 글씨 */
+#header,
+#menu {
+  padding: 10px 30px;
+}
+
+.protectedLink {
+  color: #00ffe0;
+  text-decoration: none;
+}
+
+.protectedLink:hover {
+  text-shadow: 0 0 5px #ff00cc;
+}
+
+
+/* 전체 문장 glow */
+.slogan p {
+  color: #00ffe0;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-shadow: 0 0 5px #00ffe0, 0 0 10px #00ffe0;
+  animation: flicker 2.5s infinite alternate;
+  margin: 5px 0;
+}
+
+.slogan .highlight {
+  font-size: 1.2em;
+  font-weight: 900;
+  animation: colorGlow 2s ease-in-out infinite alternate;
+}
+
+
+
+
+@keyframes glow {
+  0% {
+    text-shadow: 0 0 5px #00fff0, 0 0 10px #00fff0;
+  }
+  100% {
+    text-shadow: 0 0 20px #00fff0, 0 0 40px #00fff0;
+  }
+}
+
+@keyframes flicker {
+  0% { opacity: 1; }
+  50% { opacity: 0.9; }
+  70% { opacity: 1; }
+  85% { opacity: 0.8; }
+  100% { opacity: 1; }
+}
+
+

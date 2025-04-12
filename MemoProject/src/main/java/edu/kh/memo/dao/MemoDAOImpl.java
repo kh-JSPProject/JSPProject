@@ -166,7 +166,33 @@ public class MemoDAOImpl implements MemoDAO {
 						.regDate(rs.getString("REG_DATE")).updateDate(rs.getString("UPDATE_DATE")).build();
 			}
 		} finally {
+			close(rs);
+			close(pstmt);
 		}
-		return null;
+		return memo;
+	}
+
+	@Override
+	public int memoUpdate(Connection conn, int memoNo, String title, String content, String updateDate)
+			throws Exception {
+		
+		int result = 0;
+		
+		try {
+			String sql = prop.getProperty("memoUpdate");
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, title);
+			pstmt.setString(2, content);
+			pstmt.setString(3, updateDate);
+			pstmt.setInt(4, memoNo);
+			
+			result = pstmt.executeUpdate();
+			
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
 	}
 }

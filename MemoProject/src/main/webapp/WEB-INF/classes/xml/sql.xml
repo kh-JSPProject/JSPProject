@@ -12,8 +12,8 @@
 
 <entry key="memoListSelect">
 	SELECT memo_no, user_no, title, content, 
-		   to_char(reg_date,'YYYY-MM-DD HH:MI') reg_date,
-		   to_char(UPDATE_DATE,'YYYY-MM-DD HH:MI') UPDATE_DATE
+		   to_char(reg_date,'YYYY-MM-DD HH24:MI') reg_date,
+		   to_char(UPDATE_DATE,'YYYY-MM-DD HH24:MI') UPDATE_DATE
 	FROM tb_memos
 	WHERE user_no = (SELECT user_no
 					 FROM TB_USERS
@@ -23,8 +23,8 @@
 
 <entry key="memoDetail">
 	SELECT MEMO_NO, TITLE, CONTENT,
-		TO_CHAR(REG_DATE,'YYYY-MM-DD HH24:MI:SS') REG_DATE
-		TO_CHAR(UPDATE_DATE,'YYYY-MM-DD HH24:MI:SS') UPDATE_DATE
+		TO_CHAR(REG_DATE,'YYYY-MM-DD HH24:MI') REG_DATE,
+		TO_CHAR(UPDATE_DATE,'YYYY-MM-DD HH24:MI') UPDATE_DATE
 		FROM TB_MEMOS
 		WHERE MEMO_NO = ?
 </entry>
@@ -41,7 +41,11 @@
  	VALUES(SEQ_MEMO_NO.NEXTVAL,?,?,?,DEFAULT,DEFAULT)
 </entry>	
 	
-	
+<entry key="memoUpdate">
+	UPDATE TB_MEMOS
+SET TITLE = ?, CONTENT = ?, UPDATE_DATE = TO_DATE(?, 'YYYY-MM-DD HH24:MI')
+WHERE MEMO_NO = ? 
+</entry>	
 	
 	
 	

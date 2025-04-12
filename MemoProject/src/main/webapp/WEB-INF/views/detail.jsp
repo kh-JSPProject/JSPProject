@@ -7,44 +7,58 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>${detail}</title>
+	<!-- CSS 연결 -->
+	<link rel="stylesheet" href="/resources/css/detail.css">
+<title>${memo.title}</title>
 </head>
 <body>
-	<h1>${sessionScope.loginMember}</h1>
+	<%--<h1>${sessionScope.loginMember}</h1> --%>
+	<div id="header">
+		<div class="home btn left">
+			<a href="/main">HOME</a>
+		</div>
 
-	<h1>${memo.memoTitle}</h1>
-	
-	<div class="complete">
-		완료 여부 :
-		
-		<c:if test="${memo.memoComplete}">
-			<span class="green">O</span>
-		</c:if>
-		
-		<c:if test="${not memo.memoComplete}">
-			<span class="red">X</span>
-		</c:if>
-	</div>
-
-	<div>
-		작성일 : ${memo.regDate}
-	</div>
-	<div>
-		수정일 : ${memo.updateDate}
+		<div class="right">
+			<div class="userInfo">
+				<p>${loginMember.userName}</p>
+			</div>
+			<button type="button" class="signOut btn" id="logout" >로그아웃</button>
+		</div>
 	</div>
 	
-	<div class="content">${memo.memoDetail}</div>
+
+
+	<h1>${memo.title}</h1>
+	
+
+	
+	<div class="content">${memo.content}</div>
+		
+	<div class = "memo-info">
+	작성자 : ${loginMember.userName}
+	작성일 : ${memo.regDate} 
+	수정일 : ${memo.updateDate}
+	</div>
+	
+	
+	<div>
+	</div>
+	
 	
 	<div class= "btn-container">
 		<div>
-			<button type="button" id="goToList">목록으로</button>
+			<button type="button" id="goMain">목록으로</button>
 		</div>
 		
 		<div>
-			<button id="completeBtn">완료 여부 변경</button>
 			<button id="updateBtn">수정</button>
 			<button id="deleteBtn">삭제</button>
 		</div>
+	</div>
+	
+	<div class = "btn-next">
+		<button>이전글</button>
+		<button>다음글</button>
 	</div>
 	
 		<%-- session 범위에 message가 있을 경우 --%>
@@ -61,5 +75,7 @@
 		<c:remove var="message" scope="session"/>
 	</c:if>
 
+<%--자바 연결 --%>
+<script src="/resources/js/detail.js"></script>
 </body>
 </html>

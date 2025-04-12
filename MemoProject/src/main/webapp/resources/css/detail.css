@@ -1,24 +1,139 @@
-div {
-  margin: 10px 0;
-}
-.complete>span{font-weight: bold;}
-.green {color: green;}
-.red {color: red;}
-.content{
-  border: 2px solid #ccc;
-  padding: 10px;
-  width: 480px;
-  min-height: 300px;
-
-
-  /*내부 내용을 pre태그처럼
-  html 에 작성된 그대로 출력*/
-  white-space: pre-wrap; 
+/* 전체 공통 */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.btn-container{
+body {
+  background-color: #0f0f0f;
+  color: #00ffe0;
+  font-family: 'Courier New', monospace;
+  padding: 40px 20px;
+}
+
+/* 헤더 영역 */
+#header {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
-  width: 500px;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+#header .left a {
+  font-size: 1.8em;
+  color: #00ffe0;
+  text-decoration: none;
+  font-weight: bold;
+  text-shadow: 0 0 5px #00ffe0;
+}
+
+#header .left a:hover {
+  text-decoration: underline;
+}
+
+#header .right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#header .userInfo p {
+  margin-right: 10px;
+  font-weight: bold;
+  color: #00ffe0;
+  text-shadow: 0 0 5px #00ffe0; 
+}
+
+#header .signOut {
+  background-color: transparent;
+  border: 2px solid #ff0044;
+  color: #ff0044;
+  padding: 8px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+#header .signOut:hover {
+  background-color: #ff0044;
+  color: #0f0f0f;
+}
+
+/* 제목 */
+h1 {
+  text-align: center;
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  color: #00ffe0;
+  text-shadow: 0 0 10px #00ffe0, 0 0 20px #00ffe0;
+}
+
+/* 메모 내용 */
+.content {
+  background-color: #1a1a1a;
+  border: 2px solid #00ffe0;
+  padding: 30px;
+  border-radius: 20px;
+  width: 80%;
+  margin: 0 auto 30px auto;
+  white-space: pre-wrap;
+  box-shadow: 0 0 20px #00ffe0aa;
+}
+
+/* 작성자 정보 */
+.memo-info {
+  text-align: center;
+  font-size: 1em;
+  color: #00ffe0;
+  margin-bottom: 30px;
+  text-shadow: 0 0 5px #00ffe0;
+}
+
+/* 버튼 영역 */
+.btn-container {
+  display: flex;
+  justify-content: space-between;
+  max-width: 600px;
+  margin: 0 auto 30px auto;
+}
+
+.btn-container button {
+  background-color: transparent;
+  border: 2px solid #00ffe0;
+  color: #00ffe0;
+  font-size: 1em;
+  padding: 10px 25px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-container button:hover {
+  background-color: #00ffe0;
+  color: #0f0f0f;
+}
+
+/* 이전글, 다음글 버튼 */
+.btn-next {
+  display: flex;
+  justify-content: space-between;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.btn-next button {
+  background-color: transparent;
+  border: 2px solid #888;
+  color: #888;
+  font-size: 0.95em;
+  padding: 8px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-next button:hover {
+  background-color: #888;
+  color: #0f0f0f;
 }
