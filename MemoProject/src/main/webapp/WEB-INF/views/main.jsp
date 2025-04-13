@@ -1,19 +1,17 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<%
-long now = System.currentTimeMillis();
-%>
+<% long now = System.currentTimeMillis(); %>
 
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>${loginMember.userName}님의메모</title>
-<link rel="stylesheet" href="/resources/css/main.css?ver=<%=now%>">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>${loginMember.userName}님의 메모</title>
+	<link rel="stylesheet" href="/resources/css/main.css?ver=<%=now%>">
+	<link rel="stylesheet" href="/resources/css/default.css">
 </head>
 
 <body>
@@ -36,13 +34,9 @@ long now = System.currentTimeMillis();
 		</div>
 
 		<div class="create btn right">
-			<a href="/memo/create" class="btn white-glow">메모 작성하기</a>
+			<a href="/memo/create" class="btn create">메모 작성하기</a>
 		</div>
-
 	</div>
-
-
-
 
 	<div id="container">
 		<div class="memo-count">총 메모 : ${fn:length(memoList)}개</div>
@@ -52,8 +46,8 @@ long now = System.currentTimeMillis();
 				<a href="/memo/detail?memoNo=${memo.memoNo}">
 					<div class="memo title">${memo.title}</div>
 					<div class="memo info">
-						<span class="memo userName">${loginMember.userName}</span> <span
-							class="memo editDate">${memo.updateDate}</span>
+						<span class="memo userName">${loginMember.userName}</span> 
+						<span class="memo editDate">${memo.updateDate}</span>
 					</div>
 					<div class="memo content">
 						<c:out value="${memo.content}" escapeXml="false" />
@@ -63,17 +57,13 @@ long now = System.currentTimeMillis();
 		</c:forEach>
 	</div>
 
-	<div>
-		<c:if test="${not empty sessionScope.message}">
-			<script>
-				alert('${sessionScope.message}');
-			</script>
-			<c:remove var="message" scope="session" />
-		</c:if>
-	</div>
+	<c:if test="${not empty sessionScope.message}">
+		<script>
+			alert('${sessionScope.message}');
+		</script>
+		<c:remove var="message" scope="session" />
+	</c:if>
 
 	<script src="/resources/js/main.js"></script>
-
-
 </body>
 </html>
