@@ -20,6 +20,13 @@ body {
   padding: 20px;
 }
 
+#header .left a {
+  font-size: 1.8em;
+  color: #4e7cf1;
+  text-decoration: none;
+  font-weight: bold;
+}
+
 /* 메뉴 영역 */
 #menu {
   width: 100%;
@@ -50,14 +57,7 @@ a.btn.create:hover {
   background-color: #3a66d6;
 }
 
-#header .left a {
-  font-size: 1.8em;
-  color: #4e7cf1;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-/* container 안에 메모들 */
+/* 컨테이너 안에 메모들 */
 #container {
   display: flex;
   flex-direction: column;
@@ -106,9 +106,7 @@ a.btn.create:hover {
   border-radius: 8px;
   padding: 15px;
   min-height: 80px;
-  
-  text-shadow: 0 0 5px #00ffccaa;
-  
+
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -119,9 +117,10 @@ a.btn.create:hover {
   word-break: break-word;
 }
 
+/* 메모 내용 hover 효과 */
 .memo.content:hover {
-  border-color: azure; 
-  box-shadow: 0 0 8px #ffaa00aa; 
+  border-color: azure;
+  box-shadow: 0 0 8px #ffaa00aa;
 }
 
 /* 메모 목록 제목 */
