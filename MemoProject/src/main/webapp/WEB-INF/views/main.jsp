@@ -57,12 +57,14 @@
 		</c:forEach>
 	</div>
 
-	<c:if test="${not empty sessionScope.message}">
-		<script>
-			alert('${sessionScope.message}');
-		</script>
-		<c:remove var="message" scope="session" />
-	</c:if>
+	<div>
+		<c:if test="${not empty sessionScope.message}">
+			<script>
+				alert('${sessionScope.message}');
+			</script>
+			<c:remove var="message" scope="session" />
+		</c:if>
+	</div>
 
 	<script src="/resources/js/main.js"></script>
 </body>
