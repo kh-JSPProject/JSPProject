@@ -17,7 +17,6 @@ public class LogoutServlet extends HttpServlet {
 	    	session.invalidate();
 		 
 		    resp.sendRedirect("/main"); // JSP 없이 바로 메인 이동
-		 
 			
 		} catch (Exception e) {
 			e.printStackTrace();
