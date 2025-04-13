@@ -36,6 +36,13 @@ body {
   padding: 20px;
 }
 
+#menu>.left {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  gap: 12px;
+}
+
 /* 버튼 기본 스타일 */
 button,
 a.btn.right, 
@@ -75,6 +82,7 @@ a.btn.create:hover {
   flex-direction: column;
   gap: 10px;
   border: 1px solid #ddd;
+  margin: 12px;
 }
 
 .memo.item > a {
@@ -115,12 +123,6 @@ a.btn.create:hover {
 
   white-space: normal;
   word-break: break-word;
-}
-
-/* 메모 내용 hover 효과 */
-.memo.content:hover {
-  border-color: azure;
-  box-shadow: 0 0 8px #ffaa00aa;
 }
 
 /* 메모 목록 제목 */

@@ -31,6 +31,7 @@
 	<div id="menu">
 		<div class="left">
 			<h2 class="neon-title">메모 목록</h2>
+			<p class="memo-count">총 메모 : ${fn:length(memoList)}개</p>
 		</div>
 
 		<div class="create btn right">
@@ -39,8 +40,6 @@
 	</div>
 
 	<div id="container">
-		<div class="memo-count">총 메모 : ${fn:length(memoList)}개</div>
-
 		<c:forEach items="${memoList}" var="memo" varStatus="vs">
 			<div class="memo item">
 				<a href="/memo/detail?memoNo=${memo.memoNo}">

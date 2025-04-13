@@ -26,7 +26,6 @@ updateBtn.addEventListener("click",()=>{
 
 
 // 왼쪽 화살표 오른쪽 화살표
-
 document.addEventListener("keyup", function(event) {
   const prevBtn = document.querySelector("#prevBtn");
   const nextBtn = document.querySelector("#nextBtn");
