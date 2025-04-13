@@ -10,7 +10,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>EDIT ${memo.title}</title>
-        <link href="/resources/css/update.css" rel="stylesheet">
+        <link href="/resources/css/update2.css" rel="stylesheet">
+        <link href="/resources/css/default.css" rel="stylesheet">
         <script src="https://kit.fontawesome.com/ca7ab47691.js" crossorigin="anonymous"></script>
     </head>
     
