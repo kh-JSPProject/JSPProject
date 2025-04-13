@@ -41,6 +41,12 @@ public class MainServlet extends HttpServlet {
 
 			// 메모리스트 조회
 			List<Memo> memoList = service.memoListSelect(userId);
+			
+			for (Memo memo : memoList) {
+			    if (memo.getContent() != null) {
+			        memo.setContent(memo.getContent().replaceAll("\n", " "));
+			    }
+			}
 
 			// request에 세팅
 			req.setAttribute("loginMember", loginMember); // userName도 포함되어 있음

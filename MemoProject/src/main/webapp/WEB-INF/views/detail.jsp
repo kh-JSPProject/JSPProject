@@ -58,7 +58,7 @@
 		<!-- 이전글 -->
 		<c:choose>
 			<c:when test="${prevNo != -1}">
-				<button onclick="location.href='/memo/detail?memoNo=${prevNo}'">이전글</button>
+				<button id="prevBtn" onclick="location.href='/memo/detail?memoNo=${prevNo}'">이전글</button>
 			</c:when>
 			<c:otherwise>
 				<button disabled>이전글</button>
@@ -68,7 +68,7 @@
 		<!-- 다음글 -->
 		<c:choose>
 			<c:when test="${nextNo != -1}">
-				<button onclick="location.href='/memo/detail?memoNo=${nextNo}'">다음글</button>
+				<button id="nextBtn" onclick="location.href='/memo/detail?memoNo=${nextNo}'">다음글</button>
 			</c:when>
 			<c:otherwise>
 				<button disabled>다음글</button>

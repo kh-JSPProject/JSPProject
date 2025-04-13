@@ -118,14 +118,21 @@ a {
   min-height: 80px;
   text-shadow: 0 0 5px #00ffccaa;
 
-  /* 줄 수 제한 및 말줄임(...) 처리 */
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
+
   overflow: hidden;
   text-overflow: ellipsis;
+
+  white-space: normal;      /* 줄바꿈 허용 (엔터는 이미 제거됨) */
+  word-break: break-word;   /* 단어가 길어도 줄바꿈 가능 */
 }
 
+.memo.content:hover {
+  border-color: azure; 
+  box-shadow: 0 0 8px #ffaa00aa; 
+}
 .neon-title {
   font-size: 1.8em;
   font-weight: 900;

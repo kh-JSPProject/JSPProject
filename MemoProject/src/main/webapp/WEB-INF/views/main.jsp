@@ -1,18 +1,19 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 
 <%
-    long now = System.currentTimeMillis();
+long now = System.currentTimeMillis();
 %>
 
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>${loginMember.userName}님의 메모</title>
-	<link rel="stylesheet" href="/resources/css/main.css?ver=<%=now%>">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>${loginMember.userName}님의메모</title>
+<link rel="stylesheet" href="/resources/css/main.css?ver=<%=now%>">
 </head>
 
 <body>
@@ -23,9 +24,9 @@
 
 		<div class="right">
 			<div class="userInfo">
-				<p>${loginMember.userName} 님 </p>
+				<p>${loginMember.userName}님</p>
 			</div>
-			<button type="button" class="signOut btn"  id="logout">로그아웃</button>
+			<button type="button" class="signOut btn" id="logout">로그아웃</button>
 		</div>
 	</div>
 
@@ -37,18 +38,26 @@
 		<div class="create btn right">
 			<a href="/memo/create" class="btn white-glow">메모 작성하기</a>
 		</div>
+
 	</div>
 
+
+
+
 	<div id="container">
+		<div class="memo-count">총 메모 : ${fn:length(memoList)}개</div>
+
 		<c:forEach items="${memoList}" var="memo" varStatus="vs">
 			<div class="memo item">
 				<a href="/memo/detail?memoNo=${memo.memoNo}">
 					<div class="memo title">${memo.title}</div>
 					<div class="memo info">
-						<span class="memo userName">${loginMember.userName}</span>
-						<span class="memo editDate">${memo.updateDate}</span>
+						<span class="memo userName">${loginMember.userName}</span> <span
+							class="memo editDate">${memo.updateDate}</span>
 					</div>
-					<div class="memo content">${memo.content}</div>
+					<div class="memo content">
+						<c:out value="${memo.content}" escapeXml="false" />
+					</div>
 				</a>
 			</div>
 		</c:forEach>
@@ -64,7 +73,7 @@
 	</div>
 
 	<script src="/resources/js/main.js"></script>
-	
-	
+
+
 </body>
 </html>

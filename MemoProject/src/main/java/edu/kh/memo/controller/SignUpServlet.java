@@ -45,11 +45,8 @@ public class SignUpServlet extends HttpServlet {
 			
 			
 			
-//			String passwordRegex = "^(?=.*[a-zA-Z])(?=.*\\d)(?=.*[!@#$%^&*()_+\\-=\r\n"
-//					+ "\r\n"
-//					+ "\\[\\]\r\n"
-//					+ "\r\n"
-//					+ "{};':\"\\\\|,.<>\\/?]).{8,}$";
+			String passwordRegex = "^(?=\\S{4,}).*$"; // 공백은 제외한 진짜 네자리의 문자, 숫자, 특수문자 중 아무거나 네자리면 됨
+
 		
 			
 			
@@ -82,13 +79,13 @@ public class SignUpServlet extends HttpServlet {
 
 			
 		
-//			else if(!userPw.matches(passwordRegex)) {
-//				session.setAttribute("REGError", "최소 1개의 특수문자, 1개의 숫자, 그리고 영어(대소문자 무관)를 포함하는 비밀번호로 설정해주세요.");
-//				RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/signUp.jsp");
-//				dispatcher.forward(req, resp);
-//				return;
-//			}
-//			
+			else if(!userPw.matches(passwordRegex)) {
+				session.setAttribute("REGError", "비밀번호는 공백을 제외한 최소 4자리 이상이어야 합니다.");
+				RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/signUp.jsp");
+				dispatcher.forward(req, resp);
+				return;
+			}
+			
 			
 			
 			
@@ -106,13 +103,15 @@ public class SignUpServlet extends HttpServlet {
 //			if(signup) 				System.out.println("일단 true긴 함");
 
 			
-			if (signup) {
-				// 성공 시: 세션에 환영 메시지 저장 후 로그인 페이지로 redirect
-				String signUpMessage = userName + "님 환영합니다!";
-				session.setAttribute("signUpMessage", signUpMessage);
-				resp.sendRedirect("/signin");
-			}
+//			if (signup) {
+//				// 성공 시: 세션에 환영 메시지 저장 후 로그인 페이지로 redirect
+//				String signUpMessage = userName + "님 환영합니다!";
+//				session.setAttribute("signUpMessage", signUpMessage);
+//				resp.sendRedirect("/signin");
+//			}
 			
+			// 세션 무효화 때문에 이건 뜨지 않습니다. 
+			// 로그인창 뜨자마자 모든 정보가 사라져야 하기 때문에 어쩔수 없음
 			
 
 		}
