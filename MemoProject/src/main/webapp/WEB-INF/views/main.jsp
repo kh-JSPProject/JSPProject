@@ -25,7 +25,7 @@
 			<div class="userInfo">
 				<p>${loginMember.userName} 님 </p>
 			</div>
-			<button type="button" class="signOut btn">로그아웃</button>
+			<button type="button" class="signOut btn"  id="logout">로그아웃</button>
 		</div>
 	</div>
 
@@ -64,5 +64,7 @@
 	</div>
 
 	<script src="/resources/js/main.js"></script>
+	
+	
 </body>
 </html>

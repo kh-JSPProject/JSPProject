@@ -1,6 +1,8 @@
 package edu.kh.memo.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import edu.kh.memo.dto.Memo;
 import edu.kh.memo.dto.User;
@@ -64,6 +66,30 @@ public class DetailServlet extends HttpServlet {
 						return;
 					}
 					
+					List<Memo> memoList = service.memoListSelect(loginMember.getUserId());
+		            List<Integer> memoNoList = new ArrayList<>();
+		            for (Memo m : memoList) {
+		                memoNoList.add(m.getMemoNo());
+		            }
+		            
+		            // memoNoList가 오름차순이라는 확신
+		            int prevNo = -1;
+		            int nextNo = -1;
+		            
+		            // 현재 해당하는 번호가 몇번인가? 
+		            for (int i = 0; i < memoNoList.size(); i++) {
+		                if (memoNoList.get(i) == memoNo) {
+		                    if (i > 0) { //이전 메모가 존재한다면, 즉 처음글이 아니어서 이전글을 클릭할 수 있을 때는
+		                        prevNo = memoNoList.get(i - 1); //prevNo가 바뀌어야지
+		                    }
+		                    if (i < memoNoList.size() - 1) { //만약 다음 메모도 존재한다면 다음글을 클릭할 수 있을 때는
+		                        nextNo = memoNoList.get(i + 1); // nextNo가 바뀌어야지
+		                    }
+		                }
+		            }
+		            
+		            
+					
 					//memo가 존재하는 경우
 					//detail.jsp 로 forward로 응답
 					req.setAttribute("memo", memo);
@@ -71,6 +97,12 @@ public class DetailServlet extends HttpServlet {
 					req.setAttribute("title", title);
 					req.setAttribute("regDate", regDage);
 					req.setAttribute("updateDate", updateDate);
+					req.setAttribute("memo", memo);
+					
+					
+					// 이것도 같이 보내자 
+			        req.setAttribute("prevNo", prevNo);
+			        req.setAttribute("nextNo", nextNo);
 					
 					
 					String path = "/WEB-INF/views/detail.jsp";
