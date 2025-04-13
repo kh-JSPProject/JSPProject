@@ -2,9 +2,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<%
-    long now = System.currentTimeMillis();
-%>
+<% long now = System.currentTimeMillis(); %>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -13,6 +11,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>${loginMember.userName}님의 메모</title>
 	<link rel="stylesheet" href="/resources/css/main.css?ver=<%=now%>">
+	<link rel="stylesheet" href="/resources/css/default.css">
 </head>
 
 <body>
@@ -35,7 +34,7 @@
 		</div>
 
 		<div class="create btn right">
-			<a href="/memo/create" class="btn white-glow">메모 작성하기</a>
+			<a href="/memo/create" class="btn create">메모 작성하기</a>
 		</div>
 	</div>
 
@@ -64,7 +63,5 @@
 	</div>
 
 	<script src="/resources/js/main.js"></script>
-	
-	
 </body>
 </html>
