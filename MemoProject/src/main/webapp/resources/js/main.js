@@ -1,4 +1,4 @@
-const logout = document.querySelector(".signOut");
+const logout = document.querySelector("#logout");
 logout.addEventListener("click", ()=>{
 
   if(!confirm("정말 로그아웃하시겠습니까?"))return;
