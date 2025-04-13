@@ -3,15 +3,11 @@ logout.addEventListener("click", ()=>{
     location.href = "/logout";
 })
 
-
-
 // window.addEventListener("pageshow", function(e) {
 //     if (e.persisted) {
 //       location.reload(); 
 //     }
 //   });
-
-
 
   // // 현재 페이지 상태를 히스토리에 
 // history.pushState(null, "", location.href);
@@ -20,7 +16,6 @@ logout.addEventListener("click", ()=>{
 즉 뒤로가기를 해도 뒤로가기를 안한 상태를 유지시키는 밤식이 제일 나을듯 
 signIn.js도 참고하세요
 */
-
 
 window.addEventListener("popstate", function(event) {
     history.pushState(null, "", location.href);
