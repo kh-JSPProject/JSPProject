@@ -106,11 +106,22 @@ a.btn.create:hover {
   border-radius: 8px;
   padding: 15px;
   min-height: 80px;
+  
+  text-shadow: 0 0 5px #00ffccaa;
+  
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
+
+  white-space: normal;
+  word-break: break-word;
+}
+
+.memo.content:hover {
+  border-color: azure; 
+  box-shadow: 0 0 8px #ffaa00aa; 
 }
 
 /* 메모 목록 제목 */

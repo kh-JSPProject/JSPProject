@@ -24,3 +24,20 @@ updateBtn.addEventListener("click",()=>{
   location.href="/memo/update?memoNo="+memoNo;
 });
 
+
+// 왼쪽 화살표 오른쪽 화살표
+
+document.addEventListener("keyup", function(event) {
+  const prevBtn = document.querySelector("#prevBtn");
+  const nextBtn = document.querySelector("#nextBtn");
+
+  if (event.key === "ArrowLeft") {
+    if (prevBtn && !prevBtn.disabled) {
+      prevBtn.click();
+    }
+  } else if (event.key === "ArrowRight") {
+    if (nextBtn && !nextBtn.disabled) {
+      nextBtn.click();
+    }
+  }
+});

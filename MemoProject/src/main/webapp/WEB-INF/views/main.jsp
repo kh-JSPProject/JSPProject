@@ -1,5 +1,5 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <% long now = System.currentTimeMillis(); %>
@@ -22,9 +22,9 @@
 
 		<div class="right">
 			<div class="userInfo">
-				<p>${loginMember.userName} 님 </p>
+				<p>${loginMember.userName}님</p>
 			</div>
-			<button type="button" class="signOut btn"  id="logout">로그아웃</button>
+			<button type="button" class="signOut btn" id="logout">로그아웃</button>
 		</div>
 	</div>
 
@@ -39,28 +39,30 @@
 	</div>
 
 	<div id="container">
+		<div class="memo-count">총 메모 : ${fn:length(memoList)}개</div>
+
 		<c:forEach items="${memoList}" var="memo" varStatus="vs">
 			<div class="memo item">
 				<a href="/memo/detail?memoNo=${memo.memoNo}">
 					<div class="memo title">${memo.title}</div>
 					<div class="memo info">
-						<span class="memo userName">${loginMember.userName}</span>
+						<span class="memo userName">${loginMember.userName}</span> 
 						<span class="memo editDate">${memo.updateDate}</span>
 					</div>
-					<div class="memo content">${memo.content}</div>
+					<div class="memo content">
+						<c:out value="${memo.content}" escapeXml="false" />
+					</div>
 				</a>
 			</div>
 		</c:forEach>
 	</div>
 
-	<div>
-		<c:if test="${not empty sessionScope.message}">
-			<script>
-				alert('${sessionScope.message}');
-			</script>
-			<c:remove var="message" scope="session" />
-		</c:if>
-	</div>
+	<c:if test="${not empty sessionScope.message}">
+		<script>
+			alert('${sessionScope.message}');
+		</script>
+		<c:remove var="message" scope="session" />
+	</c:if>
 
 	<script src="/resources/js/main.js"></script>
 </body>
