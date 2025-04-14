@@ -114,6 +114,7 @@ a.btn.create:hover {
   flex-direction: column;
   gap: 10px;
   border: 1px solid #ddd;
+  width: 100%;
 }
 
 .memo.item > a {
