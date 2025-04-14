@@ -16,3 +16,6 @@ FROM tb_memos
 WHERE user_no = (SELECT user_no
 								 FROM TB_USERS
 								 WHERE user_id = 'hong01');
+
+ALTER TABLE TB_MEMOS
+MODIFY TITLE VARCHAR2(200);

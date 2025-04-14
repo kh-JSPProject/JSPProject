@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <title>회원가입</title>
-    <link rel="stylesheet" href="/resources/css/signUp.css">
+    <link rel="stylesheet" href="/resources/css/signup2.css">
 </head>
 <body>
 
@@ -24,11 +24,6 @@
             <form action="/signup" method="post">
 
                 <div class="formRow">
-                    <label for="userName">이름</label>
-                    <input type="text" name="userName" id="userName" required>
-                </div>
-
-                <div class="formRow">
                     <label for="userId">아이디</label>
                     <input type="text" name="userId" id="userId" required>
                 </div>
@@ -41,6 +36,11 @@
                 <div class="formRow">
                     <label for="userPwCheck">비밀번호 확인</label>
                     <input type="password" name="userPwCheck" id="userPwCheck" required>
+                </div>
+                
+                <div class="formRow">
+                    <label for="userName">이름</label>
+                    <input type="text" name="userName" id="userName" required>
                 </div>
 
                 <!-- 오류 메시지 -->

@@ -201,8 +201,6 @@ body {
 }
 
 
-
-
 @keyframes glow {
   0% {
     text-shadow: 0 0 5px #00fff0, 0 0 10px #00fff0;
@@ -219,5 +217,3 @@ body {
   85% { opacity: 0.8; }
   100% { opacity: 1; }
 }
-
-

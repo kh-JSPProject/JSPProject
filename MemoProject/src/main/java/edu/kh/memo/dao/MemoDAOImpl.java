@@ -92,10 +92,9 @@ public class MemoDAOImpl implements MemoDAO {
 	@Override
 	public int insertUser(User user, Connection conn) throws Exception {
 		int result = 0;
-		String sql = "INSERT INTO TB_USERS (USER_NO, USER_ID, USER_PW, USER_NAME) "
-				+ "VALUES (SEQ_USER_NO.NEXTVAL, ?, ?, ?)";
 
 		try {
+			String sql = prop.getProperty("insertUser");
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, user.getUserId());
 			pstmt.setString(2, user.getUserPw());
