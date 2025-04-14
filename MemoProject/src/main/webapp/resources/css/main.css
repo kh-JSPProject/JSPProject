@@ -3,6 +3,7 @@ html, body {
   margin: 0;
   padding: 0;
   height: 100%;
+  background-color: #fff;
   font-family: 'Noto Sans KR', sans-serif;
 }
 
@@ -121,6 +122,10 @@ a.btn.create:hover {
   gap: 12px;
 }
 
+.memo.item:hover {
+  transform: scale(1.02);
+}
+
 /* 메모 제목 */
 .memo.title {
   font-size: 20px;
@@ -169,7 +174,7 @@ a.btn.create:hover {
 
 .toggle-box {
   position: relative;
-  width: 120px; /* 원하는 크기 */
+  width: 118px; /* 원하는 크기 */
   height: 40px;
   display: flex;
   flex-direction: column;
@@ -177,6 +182,7 @@ a.btn.create:hover {
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   border-radius: 20px;
   border: 1px solid #4e7cf1;
+  box-sizing: border-box;
 }
 
 .toggle-input {
@@ -220,13 +226,15 @@ a.btn.create:hover {
 
 .toggle-bar {
   position: absolute;
-  width: 60px;
-  height: 40px;
+  width: 58px;
+  height: 38px;
   background-color: #4e7cf1;
   transition: all 0.3s ease;
   z-index: 0;
   left: 0;
   border-radius: 20px;
+  box-sizing: border-box;
+  margin: auto;
 }
 
 .tools {
